@@ -1,5 +1,5 @@
-var React = require('react');
-var ReactDOM = require('react-dom');
-var List = require('./components/list');
+import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
+import List from './components/list'
 
-ReactDOM.render(<div><List /><h1>Hello</h1></div>, document.getElementById('app'));
+ReactDOM.render(<div><List /> <h1>Hello, World! </h1></div>, document.getElementById('app'));
