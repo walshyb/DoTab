@@ -1,0 +1,21 @@
+{
+  "name": "new-tab-to-do-list",
+  "version": "1.0.0",
+  "description": "Chrome Extension to keep track of To-Dos in new tabs.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/walshyb/New-Tab-To-Do-List.git"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "babelify":   "7.3.0",
+    "browserify": "^13.0.0",
+    "gulp":       "^3.9.1",
+    "gulp-sourcemaps": "*",
+    "gulp-uglify": "*",
+    "react-dom": "*",
+    "react": "*",
+    "vinyl-buffer": "*",
+    "vinyl-source-stream": "*"
+  }
+}
