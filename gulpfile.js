@@ -9,7 +9,7 @@ var uglify = require('gulp-uglify');
 
 gulp.task('sass', function() {
   return gulp.src('./assets/stylesheets/**/*.scss')
-    .pipe(sass().on('error', sass.logError))
+    .pipe(sass().on('error', this.emit('end')))
     .pipe(gulp.dest('./public/stylesheets/'));
 });
 
@@ -31,7 +31,7 @@ gulp.task('javascripts', function() {
   bundler.transform(babelify, {presets: ["es2015", "react"]});
 
   return bundler.bundle()
-    .on('error', function (err) { console.error(err); })
+    .on('error', function (err) { this.emit('end'); })
     .pipe(source('app.js'))
     .pipe(buffer())
     .pipe(sourcemaps.init({ loadMaps: true }))
