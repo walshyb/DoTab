@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import List from './components/List'
+import AddCategory from './components/AddCategory';
 
 export default class TaskManager extends Component {
 
@@ -24,7 +25,7 @@ export default class TaskManager extends Component {
       <div>
         { this.currentDate() }
         <List /> 
-        <h1> Hello world! </h1>
+        <AddCategory /> 
       </div> 
     );
   
