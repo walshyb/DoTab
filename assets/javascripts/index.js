@@ -12,7 +12,7 @@ export default class TaskManager extends Component {
     ];
    
     var dayOfWeek = weekdays[date.getDay()];
-    var month = months[date.getUTCMonth()]; //months from 1-12
+    var month = months[date.getUTCMonth()]; 
     var day = date.getUTCDate();
     var year = date.getUTCFullYear();
 
