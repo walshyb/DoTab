@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import List from './components/List'
-import AddCategory from './components/AddCategory';
+import SelectCategory from './components/SelectCategory';
 
 export default class TaskManager extends Component {
 
@@ -25,7 +25,7 @@ export default class TaskManager extends Component {
       <div>
         { this.currentDate() }
         <List /> 
-        <AddCategory /> 
+        <SelectCategory /> 
       </div> 
     );
   
