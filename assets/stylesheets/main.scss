@@ -1,5 +1,21 @@
+/* variables */
+
+$dark-teal : #4991a2;
+
+
+
 body {
   background-color: whitesmoke;
   background: url('http://www.keating.design/wp-content/uploads/2017/01/bg.jpg');
   font-family: 'Cabin', Helvetica Neue, Helvetica, sans-serif;
+  width:90%;
+    margin: 0 auto;
 }
+
+h1 {
+  color:$dark-teal;
+  font-size:2.5rem;
+}
+
+
+/* adding tasks and categories */
