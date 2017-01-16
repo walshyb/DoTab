@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import Category from './Category';
+import AddCategory from './AddCategory';
 
 export default class SelectCategory extends Component {
 
@@ -24,8 +25,9 @@ export default class SelectCategory extends Component {
             <option value='add-category'>+ Create New</option>
           </select>
         </label>
-        { this.state.value === "add-category" ? <input type="text" /> : null }
+        { this.state.value === "add-category" ? <AddCategory /> : null }
       </form>
+      
     ); 
   };
 }
