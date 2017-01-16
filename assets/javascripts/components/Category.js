@@ -5,27 +5,23 @@ import List from './List';
 export default class Category extends Component {
   static defaultProps() {
     return {
-      categories: [] 
+      categoryName: null 
     };
   };
 
- 
-
+  constructor(props) {
+    super(props);
+    this.state = {
+      tasks: []
+    };
+  }
 
   render() {
-
     return (
-      <div> 
-        { this.props.categories.map(function(key) { 
-            return (
-              <article className="category">
-                <h2>{key}</h2>
-              </article>
-            );
-          })  
-        } 
-      </div>
-
-    ); 
+      <article className="category">
+        <h2>{this.props.categoryName}</h2>
+        <List tasks={this.state.tasks}/>
+      </article>
+    );
   };
 }
