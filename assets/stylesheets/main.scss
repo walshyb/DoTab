@@ -14,9 +14,10 @@ body {
 h1 {
   color: $dark-teal;
   font-size: 2.5rem;
+  width: 100%;
 }
 
-#app > div > div {
+#app > div {
   display: flex;
   flex-flow: row wrap;
 }
@@ -58,7 +59,7 @@ input, select {
 .category {
     background: rgba(241, 252, 255, 0.53);
     border-radius: 10px;
-  width:100%;
+    width:100%;
     min-height: 100px;
     padding: 20px;
     margin: 10px 10px 10px 0px;

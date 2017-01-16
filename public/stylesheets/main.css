@@ -8,9 +8,10 @@ body {
 
 h1 {
   color: #4991a2;
-  font-size: 2.5rem; }
+  font-size: 2.5rem;
+  width: 100%; }
 
-#app > div > div {
+#app > div {
   display: flex;
   flex-flow: row wrap; }
 
