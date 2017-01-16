@@ -27,7 +27,6 @@ export default class SelectCategory extends Component {
         </label>
         { this.state.value === "add-category" ? <AddCategory /> : null }
       </form>
-      
     ); 
   };
 }
