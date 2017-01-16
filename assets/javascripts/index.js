@@ -48,7 +48,7 @@ export default class TaskManager extends Component {
       <div>
         { this.currentDate() }
         <Category categories={this.state.categories}/> 
-        <SelectCategory /> 
+        <SelectCategory categories={this.state.categories}/ > 
       </div> 
     );
   
