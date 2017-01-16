@@ -19,6 +19,7 @@ export default class SelectCategory extends Component {
 
   handleChange(event) {
     this.setState({value: event.target.value});
+    this.props.onSelect(event.target.value);
   };
 
   renderOptions() {
