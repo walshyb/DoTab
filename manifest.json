@@ -3,6 +3,11 @@
   "name": "New Tab To-Do List (please change)",
   "short_name": "NTDL",
   "version": "1.0.0",
+  "authors": [{
+    "name": "Brandon Walsh"
+  }, {
+    "name": "Shauna Keating"
+  }],
   "description":  "Chrome Extension to keep track of To-Dos in new tabs.",
   "icons": { },
   "homepage_url": "https://github.com/walshyb/New-Tab-To-Do-List",
