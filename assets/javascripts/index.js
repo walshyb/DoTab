@@ -2,16 +2,24 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import List from './components/List'
 import AddTask from './components/AddTask';
-import Category from './components/Category.js';
+import Category from './components/Category';
+import CategoryList from './components/CategoryList';
 
 export default class TaskManager extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      categories: []
+      categories: [],
+      tasks: []
     };
-  }
+
+    chrome.storage.sync.get(null, function(categoryKeys) {   // get all keys from chrome storage
+      var allKeys = Object.keys(categoryKeys);                      // store them in list
+      this.setState( {categories: allKeys} );                // assign list of JSX objects to attribute 'categories'
+    }.bind(this)); 
+
+  };
 
   currentDate() {
     var date = new Date();
@@ -28,26 +36,15 @@ export default class TaskManager extends Component {
     return <h1>{dayOfWeek}, {month} {day}, {year} </h1>; 
   };
 
-  componentWillMount() {
-    chrome.storage.sync.get(null, function(items) {   // get all keys from chrome storage
-      var allKeys = Object.keys(items);               // store them in list
-
-      this.setState( {categories: allKeys} );            // assign list of JSX objects to attribute 'categories'
-    }.bind(this));  
-
-    chrome.storage.sync.get(this.props.categoryName, function(tasks) {  
-      this.setState( {tasks: tasks} );            // assign list of JSX objects to attribute 'tasks'
-    }.bind(this));  
-  };
-
   render() {
     return (
       <div>
       { this.currentDate() }
+      <CategoryList categories={this.state.categories}/>
       {
         this.state.categories.map(function(category) {
-          return <Category categoryName={category}/>;
-        })
+          return <Category categoryName={category} />;
+        }.bind(this))
       }
       <AddTask categories={this.state.categories}/ > 
       </div> 
