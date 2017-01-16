@@ -11,7 +11,7 @@ h1 {
   font-size: 2.5rem;
   width: 100%; }
 
-#app > div {
+#category-list {
   display: flex;
   flex-flow: row wrap; }
 

@@ -11,7 +11,7 @@ export default class CategoryList extends Component {
     });
 
     return (
-      <div id='categoryList'> 
+      <div id='category-list'> 
         {categoryItems}
       </div>
     );
