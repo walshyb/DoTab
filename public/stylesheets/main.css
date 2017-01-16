@@ -11,8 +11,13 @@ h1 {
   font-size: 2.5rem; }
 
 /* adding tasks and categories */
+form {
+  /* puts form at bottom of page*/
+  position: absolute;
+  bottom: 60px; }
+
 /*remove default select styling */
-select {
+input, select {
   -webkit-appearance: none;
   border: 2px solid #aed2dd;
   background: #e6f7fb;
@@ -22,5 +27,20 @@ select {
   padding: 11px 14px 11px 14px;
   font-size: 20px;
   font-family: "Cabin", Helvetica Neue, Helvetica, sans-serif; }
-  select:focus {
+  input[type="text"], select[type="text"] {
+    background: #f6fdff; }
+  input:focus, select:focus {
     outline: none; }
+
+/* categories display */
+.category {
+  background: rgba(241, 252, 255, 0.53);
+  width: 50%;
+  border-radius: 10px;
+  min-height: 100px;
+  padding: 20px;
+  margin: 10px; }
+  .category h2 {
+    font-size: 1.6rem;
+    margin-top: 0px;
+    color: #4991a2; }
