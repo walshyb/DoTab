@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import List from './components/List'
-import SelectCategory from './components/SelectCategory';
+import AddTask from './components/AddTask';
 import Category from './components/Category.js';
 
 export default class TaskManager extends Component {
@@ -56,7 +56,7 @@ export default class TaskManager extends Component {
           return <Category categoryName={category}/>;
         })
       }
-      <SelectCategory categories={this.state.categories}/ > 
+      <AddTask categories={this.state.categories}/ > 
       </div> 
     );
 
