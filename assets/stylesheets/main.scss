@@ -1,21 +1,38 @@
 /* variables */
 
-$dark-teal : #4991a2;
-
-
+$dark-teal: #4991a2;
+$font-stack: 'Cabin',Helvetica Neue,Helvetica,sans-serif;
 
 body {
   background-color: whitesmoke;
   background: url('http://www.keating.design/wp-content/uploads/2017/01/bg.jpg');
-  font-family: 'Cabin', Helvetica Neue, Helvetica, sans-serif;
-  width:90%;
-    margin: 0 auto;
+  font-family: $font-stack;
+  width: 90%;
+  margin: 0 auto;
 }
 
 h1 {
-  color:$dark-teal;
-  font-size:2.5rem;
+  color: $dark-teal;
+  font-size: 2.5rem;
 }
 
 
 /* adding tasks and categories */
+
+
+/*remove default select styling */
+
+select {
+  -webkit-appearance: none;
+  border: 2px solid #aed2dd;
+  background: #e6f7fb;
+  color: $dark-teal;
+  width: 159px;
+  border-radius: 3px;
+  padding: 11px 14px 11px 14px;
+  font-size: 20px;
+  font-family: $font-stack;
+  &:focus {
+    outline: none;
+  }
+}

@@ -32,11 +32,11 @@ export default class SelectCategory extends Component {
     return (
       <form>
         <label>
-          <select value={this.state.value} onChange={this.handleChange}>
-            <option value=''>Category</option> 
-            { this.state.categories } 
-            <option value='add-category'>+ Create New</option>
-          </select>
+            <select value={this.state.value} onChange={this.handleChange}>
+              <option value=''>Category</option> 
+              { this.state.categories } 
+              <option value='add-category'>+ Create New</option>
+            </select>
         </label>
         { this.state.value === "add-category" ? <AddCategory /> : null }
       </form>
