@@ -13,9 +13,9 @@ export default class AddCategory extends Component {
   handleSubmit(event) {
 
     //var data = { toString(this.state.value): toString(this.state.value)};
-
     var key = this.state.value; 
-    var data = { key : this.state.value};
+    var data = {};
+    data[key] = [];
 
     chrome.storage.sync.set(data, function() {
       if (chrome.runtime.lastError) {
