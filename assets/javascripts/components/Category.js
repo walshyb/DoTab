@@ -14,7 +14,8 @@ export default class Category extends Component {
     this.state = {
       tasks: []
     };
-  }
+
+  };
 
   render() {
     return (

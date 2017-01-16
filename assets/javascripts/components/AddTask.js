@@ -11,7 +11,12 @@ export default class AddTask extends Component {
       selectValue: ''
     };
 
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleClick = this.handleClick.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+  };
+
+  getInitialState() {
+    return { value: '' };
   };
 
   static defaultProps() {
@@ -21,20 +26,20 @@ export default class AddTask extends Component {
   };
 
   handleChange(event) {
-    console.log(this.state.selectValue); 
+    this.setState({value: event.target.value});
   };
 
-  handleSubmit(event) {
-  
+  handleClick(event) {
+   console.log(this.props.children); 
   };
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <div>
         <input type='text' value={this.state.value} onChange={this.handleChange}/> 
         <SelectCategory categories={this.props.categories} />
-        <input type='submit' value='Submit'/>
-      </form>
+        <button onClick={this.handleClick}>Add Task</button>
+      </div>
     );
   };
 }

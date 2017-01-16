@@ -28,13 +28,6 @@ export default class TaskManager extends Component {
     return <h1>{dayOfWeek}, {month} {day}, {year} </h1>; 
   };
 
-  get categories() {
-    chrome.storage.sync.get(null, function(items) {   
-      var allKeys = Object.keys(items);               
-      return allKeys;
-    });          
-  };
-
   componentWillMount() {
     chrome.storage.sync.get(null, function(items) {   // get all keys from chrome storage
       var allKeys = Object.keys(items);               // store them in list
