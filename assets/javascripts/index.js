@@ -17,7 +17,7 @@ export default class TaskManager extends Component {
     var date = new Date();
     const weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
     var months = ["January", "February", "March", "April", "May", "June",
-        "July", "August", "September", "October", "November", "December"
+      "July", "August", "September", "October", "November", "December"
     ];
 
     var dayOfWeek = weekdays[date.getDay()];
@@ -27,7 +27,7 @@ export default class TaskManager extends Component {
 
     return <h1>{dayOfWeek}, {month} {day}, {year} </h1>; 
   };
-  
+
   get categories() {
     chrome.storage.sync.get(null, function(items) {   
       var allKeys = Object.keys(items);               
@@ -36,22 +36,30 @@ export default class TaskManager extends Component {
   };
 
   componentWillMount() {
-     chrome.storage.sync.get(null, function(items) {   // get all keys from chrome storage
+    chrome.storage.sync.get(null, function(items) {   // get all keys from chrome storage
       var allKeys = Object.keys(items);               // store them in list
 
       this.setState( {categories: allKeys} );            // assign list of JSX objects to attribute 'categories'
-    }.bind(this));                                 // bind 'this' so we can have access to setState in chrome method
+    }.bind(this));  
+
+    chrome.storage.sync.get(this.props.categoryName, function(tasks) {  
+      this.setState( {tasks: tasks} );            // assign list of JSX objects to attribute 'tasks'
+    }.bind(this));  
   };
 
   render() {
     return (
       <div>
-        { this.currentDate() }
-        <Category categories={this.state.categories}/> 
-        <SelectCategory categories={this.state.categories}/ > 
+      { this.currentDate() }
+      {
+        this.state.categories.map(function(category) {
+          return <Category categoryName={category}/>;
+        })
+      }
+      <SelectCategory categories={this.state.categories}/ > 
       </div> 
     );
-  
+
   };
 }
 
