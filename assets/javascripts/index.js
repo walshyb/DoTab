@@ -41,12 +41,6 @@ export default class TaskManager extends Component {
       <div>
       { this.currentDate() }
       <CategoryList categories={this.state.categories}/>
-      {
-        this.state.categories.map(function(category) {
-          return <Category categoryName={category} />;
-        }.bind(this))
-      }
-      <AddTask categories={this.state.categories}/ > 
       </div> 
     );
 
