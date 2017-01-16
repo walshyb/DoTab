@@ -11,11 +11,12 @@ export default class TaskManager extends Component {
     var months = ["January", "February", "March", "April", "May", "June",
         "July", "August", "September", "October", "November", "December"
     ];
-   
+  
+
     var dayOfWeek = weekdays[date.getDay()];
-    var month = months[date.getUTCMonth()]; 
-    var day = date.getUTCDate();
-    var year = date.getUTCFullYear();
+    var month = months[date.getMonth()]; 
+    var day = date.getDate();
+    var year = date.getFullYear();
 
     return <h1>{dayOfWeek}, {month} {day}, {year} </h1>; 
   };
