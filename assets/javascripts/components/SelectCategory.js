@@ -31,22 +31,13 @@ export default class SelectCategory extends Component {
     return (
       <form>
         <label>
-<<<<<<< HEAD
-            <select value={this.state.value} onChange={this.handleChange}>
-              <option value=''>Category</option> 
-              { this.state.categories } 
-              <option value='add-category'>+ Create New</option>
-            </select>
-=======
           <select value={this.state.value} onChange={this.handleChange}>
-            <option value=''>Category</option> 
+            <option value=''>Category &#9660; </option> 
             { this.props.categories.map(function(key){
               return <option value={key}> {key} </option>
             })}
-    
             <option value='add-category'>+ Create New</option>
           </select>
->>>>>>> 9598f1224430b6c063b48dd7ee75d39e87e7132b
         </label>
         { this.state.value === "add-category" ? <AddCategory /> : null }
       </form>

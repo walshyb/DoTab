@@ -16,12 +16,18 @@ h1 {
   font-size: 2.5rem;
 }
 
+#app > div > div {
+  display: flex;
+  flex-flow: row wrap;
+}
+
 
 /* adding tasks and categories */
 
 form { /* puts form at bottom of page*/
     position: absolute;
     bottom: 60px;
+    display:flex;
 }
 
 
@@ -51,11 +57,15 @@ input, select {
 
 .category {
     background: rgba(241, 252, 255, 0.53);
-    width: 50%;
     border-radius: 10px;
+  width:100%;
     min-height: 100px;
     padding: 20px;
     margin: 10px;
+  @media (min-width: 900px) {
+  width: 42%;
+  min-width: 300px;
+  }
   h2 {
     font-size: 1.6rem;
     margin-top: 0px;
