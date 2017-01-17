@@ -7,9 +7,6 @@ export default class CategoryList extends Component {
       var categoryName = Object.keys(category)[0];
       var tasks = category[categoryName];
   
-      console.log(categoryName);
-      console.log(tasks);
-
       return (
         <CategoryListItem 
           key={categoryName} 
