@@ -12,7 +12,7 @@ export default class TaskManager extends Component {
       categories: [],
     };
     
-    this.updateCategories = this.updateCategories.bind(this);
+    this.updateCategory = this.updateCategory.bind(this);
     this.updateCategories();
   };
 
@@ -32,7 +32,9 @@ export default class TaskManager extends Component {
   };
 
   updateCategory(categoryName, tasks) {
-    chrome.storage.sync.set({categoryName: tasks});
+    var data = {};
+    data[categoryName] = tasks;
+    chrome.storage.sync.set(data);
     this.updateCategories();
   };
 
