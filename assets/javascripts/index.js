@@ -30,6 +30,10 @@ export default class TaskManager extends Component {
     }.bind(this)); 
   };
 
+  updateCategory(categoryName, task) {
+    
+  };
+
   currentDate() {
     var date = new Date();
     const weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
@@ -50,7 +54,10 @@ export default class TaskManager extends Component {
       <div>
         { this.currentDate() }
         <CategoryList categories={this.state.categories} />
-        <AddTaskBar updateCategories={this.updateCategories}/>
+        <AddTaskBar 
+          updateCategories={this.updateCategories}
+          categories={this.state.categories}
+        />
       </div> 
     );
 

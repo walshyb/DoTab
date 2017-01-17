@@ -22,6 +22,15 @@ export default class AddTaskBar extends Component {
     });
   };
 
+  renderCategoryOptions() {
+    const categoryNames = this.props.categories.map((category) => {
+      var name = Object.keys(category)[0];
+      return <option value={name} key={name}> {name} </option>;
+    });
+
+    return categoryNames;
+  };
+
   render() {
     return (
       <div id='add-task-bar'>
@@ -33,6 +42,7 @@ export default class AddTaskBar extends Component {
         />
         <select id='select-category'>
           <option>Category</option>
+          { this.renderCategoryOptions() }
         </select>
         <button id='add-task' onClick={this.handleClick}> + </button>
       </div>
@@ -41,5 +51,6 @@ export default class AddTaskBar extends Component {
 }
 
 AddTaskBar.propTypes = {
-  updateCategories: React.PropTypes.func.isRequired
+  updateCategories: React.PropTypes.func.isRequired,
+  categories: React.PropTypes.array.isRequired
 };
