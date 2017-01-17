@@ -11,7 +11,8 @@ export default class TaskManager extends Component {
     this.state = {
       categories: [],
     };
-
+    
+    this.updateCategories = this.updateCategories.bind(this);
     this.updateCategories();
   };
 
@@ -30,8 +31,9 @@ export default class TaskManager extends Component {
     }.bind(this)); 
   };
 
-  updateCategory(categoryName, task) {
-    
+  updateCategory(categoryName, tasks) {
+    chrome.storage.sync.set({categoryName: tasks});
+    this.updateCategories();
   };
 
   currentDate() {
@@ -55,7 +57,7 @@ export default class TaskManager extends Component {
         { this.currentDate() }
         <CategoryList categories={this.state.categories} />
         <AddTaskBar 
-          updateCategories={this.updateCategories}
+          updateCategory={this.updateCategory}
           categories={this.state.categories}
         />
       </div> 

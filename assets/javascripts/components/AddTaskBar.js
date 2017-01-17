@@ -6,20 +6,40 @@ export default class AddTaskBar extends Component {
 
     this.state = {
       inputValue: '',
-      selectValue: ''
+      currentCategory: ''
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleSelectChange = this.handleSelectChange.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   };
 
   handleClick() {
+    var categories = this.props.categories;
     
+    categories.map((category) => {
+      var name = Object.keys(category)[0];
+      if (name === this.state.currentCategory) {
+
+        var tasks = category[name];
+        tasks.push(this.state.inputValue);
+        this.props.updateCategory(name, tasks);
+      }
+    });
   };
 
   handleInputChange(event) {
     this.setState({
       inputValue: event.target.value
     });
+  };
+
+  handleSelectChange(event) {
+    if(event.target.value !== '' && event.target.value !== 'add-category') {
+      this.setState({
+        currentCategory: event.target.value
+      });
+    }
   };
 
   renderCategoryOptions() {
@@ -40,8 +60,8 @@ export default class AddTaskBar extends Component {
           onChange={this.handleInputChange}
           placeholder='What do you need to get done?' 
         />
-        <select id='select-category'>
-          <option>Category</option>
+        <select id='select-category' onChange={this.handleSelectChange}>
+          <option value=''>Category</option>
           { this.renderCategoryOptions() }
         </select>
         <button id='add-task' onClick={this.handleClick}> + </button>
@@ -51,6 +71,6 @@ export default class AddTaskBar extends Component {
 }
 
 AddTaskBar.propTypes = {
-  updateCategories: React.PropTypes.func.isRequired,
+  updateCategory: React.PropTypes.func.isRequired,
   categories: React.PropTypes.array.isRequired
 };
