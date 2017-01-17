@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import List from './components/List'
-import AddTask from './components/AddTask';
-import Category from './components/Category';
 import CategoryList from './components/CategoryList';
 
 export default class TaskManager extends Component {

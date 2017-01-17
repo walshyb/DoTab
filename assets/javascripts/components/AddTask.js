@@ -16,10 +16,6 @@ export default class AddTask extends Component {
     this.handleSelect = this.handleSelect.bind(this);
   };
 
-  getInitialState() {
-    return { value: '' };
-  };
-
   static defaultProps() {
     return {
       categories: [] 
