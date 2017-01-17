@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import CategoryList from './components/CategoryList';
+import AddTaskBar from './components/AddTaskBar';
 
 export default class TaskManager extends Component {
 
@@ -11,10 +12,10 @@ export default class TaskManager extends Component {
       categories: [],
     };
 
-    this.storageGet(null);
+    this.updateCategories();
   };
 
-  storageGet(key) {
+  updateCategories() {
     chrome.storage.sync.get(null, function(categories) { 
 
       var categoryArray = [];
@@ -47,8 +48,9 @@ export default class TaskManager extends Component {
   render() {
     return (
       <div>
-      { this.currentDate() }
-      <CategoryList categories={this.state.categories} />
+        { this.currentDate() }
+        <CategoryList categories={this.state.categories} />
+        <AddTaskBar />
       </div> 
     );
 
