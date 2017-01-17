@@ -50,7 +50,7 @@ export default class TaskManager extends Component {
       <div>
         { this.currentDate() }
         <CategoryList categories={this.state.categories} />
-        <AddTaskBar />
+        <AddTaskBar updateCategories={this.updateCategories}/>
       </div> 
     );
 
