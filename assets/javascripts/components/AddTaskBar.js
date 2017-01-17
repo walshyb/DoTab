@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import AddCategory from './AddCategory';
 
 export default class AddTaskBar extends Component {
   constructor(props) {
@@ -6,7 +7,8 @@ export default class AddTaskBar extends Component {
 
     this.state = {
       inputValue: '',
-      currentCategory: ''
+      currentCategory: '',
+      displayAddCategoryField: false
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -26,7 +28,7 @@ export default class AddTaskBar extends Component {
         this.props.updateCategory(name, tasks);
 
         this.setState({
-          inputValue: ''
+          inputValue: '',
         });
       }
     });
@@ -42,6 +44,10 @@ export default class AddTaskBar extends Component {
     if(event.target.value !== '' && event.target.value !== 'add-category') {
       this.setState({
         currentCategory: event.target.value
+      });
+    } else if (event.target.value === 'add-category') {
+      this.setState({
+        displayAddCategoryField: true
       });
     }
   };
@@ -67,7 +73,11 @@ export default class AddTaskBar extends Component {
         <select id='select-category' onChange={this.handleSelectChange}>
           <option value=''>Category</option>
           { this.renderCategoryOptions() }
+          <option value='add-category'>Add Category</option>
         </select>
+      
+        { this.state.displayAddCategoryField ? <AddCategory updateCategory={this.props.updateCategory} /> : null }
+
         <button id='add-task' onClick={this.handleClick}> + </button>
       </div>
     );
