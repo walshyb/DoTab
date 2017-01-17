@@ -24,6 +24,10 @@ export default class AddTaskBar extends Component {
         var tasks = category[name];
         tasks.push(this.state.inputValue);
         this.props.updateCategory(name, tasks);
+
+        this.setState({
+          inputValue: ''
+        });
       }
     });
   };
