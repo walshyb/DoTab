@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 
 export default class CategoryListItem extends Component {
   render() {
-    const category = this.props.category;
-
+    const tasks = this.props.tasks.map(function(task) {
+      return <li>  {task} </li>;
+    });
     return (
-      <article className='category' id={category}>
-        <h2> {category} </h2>
+      <article className='category' id={this.props.categoryName}>
+        <h2> {this.props.categoryName} </h2>
+        <ul> { tasks } </ul>
       </article>
     );
   };  

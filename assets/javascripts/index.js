@@ -9,16 +9,27 @@ export default class TaskManager extends Component {
 
   constructor(props) {
     super(props);
+
     this.state = {
       categories: [],
-      tasks: []
     };
 
-    chrome.storage.sync.get(null, function(categoryKeys) {   // get all keys from chrome storage
-      var allKeys = Object.keys(categoryKeys);                      // store them in list
-      this.setState( {categories: allKeys} );                // assign list of JSX objects to attribute 'categories'
-    }.bind(this)); 
+    this.storageGet(null);
+  };
 
+  storageGet(key) {
+    chrome.storage.sync.get(null, function(categories) { 
+
+      var categoryArray = [];
+
+      for(var categoryKey in categories) {
+        var data = {};
+        data[categoryKey] = categories[categoryKey];
+        categoryArray.push(data);
+      }
+
+      this.setState({ categories: categoryArray }); 
+    }.bind(this)); 
   };
 
   currentDate() {
@@ -40,7 +51,7 @@ export default class TaskManager extends Component {
     return (
       <div>
       { this.currentDate() }
-      <CategoryList categories={this.state.categories}/>
+      <CategoryList categories={this.state.categories} />
       </div> 
     );
 
