@@ -42,12 +42,24 @@ export default class AddTaskBar extends Component {
 
   handleSelectChange(event) {
     if(event.target.value !== '' && event.target.value !== 'add-category') {
+
+      console.log('not \'\' nor add-category');
+
       this.setState({
-        currentCategory: event.target.value
+        currentCategory: event.target.value,
+        displayAddCategoryField: false
       });
     } else if (event.target.value === 'add-category') {
+
+      console.log('is add-category');
+
       this.setState({
         displayAddCategoryField: true
+      });
+    } else {
+      console.log('is not add-category');
+      this.setState({
+        displayAddCategoryField: false
       });
     }
   };
