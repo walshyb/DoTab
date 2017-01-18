@@ -2,7 +2,12 @@ import React, { Component } from 'react';
 
 export default class Task extends Component {
   render() {
-    return <li>{this.props.text}</li>
+    return (
+      <li>
+        <input type='checkbox' />
+        {this.props.text}
+      </li>
+    );
   };
 }
 
