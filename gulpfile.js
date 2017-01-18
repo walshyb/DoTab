@@ -18,6 +18,7 @@ gulp.task('apply-production', function() {
 });
 
 gulp.task('default', function() {
+  gulp.start('apply-production');
   gulp.watch('./assets/stylesheets/**/*.scss', ['sass']);
   gulp.watch('./assets/javascripts/**/*.js', ['javascripts']);
 });
