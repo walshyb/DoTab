@@ -23,7 +23,7 @@ form {
   display: flex; }
 
 /*remove default select styling */
-input, select {
+input[type=text], select {
   -webkit-appearance: none;
   border: 2px solid #aed2dd;
   background: #e6f7fb;
@@ -33,9 +33,9 @@ input, select {
   padding: 11px 14px 11px 14px;
   font-size: 20px;
   font-family: "Cabin", Helvetica Neue, Helvetica, sans-serif; }
-  input[type="text"], select[type="text"] {
+  input[type=text][type="text"], select[type="text"] {
     background: #f6fdff; }
-  input:focus, select:focus {
+  input[type=text]:focus, select:focus {
     outline: none; }
 
 /* categories display */

@@ -34,7 +34,7 @@ form { /* puts form at bottom of page*/
 
 /*remove default select styling */
 
-input, select {
+input[type=text], select {
   -webkit-appearance: none;
   border: 2px solid #aed2dd;
   background: #e6f7fb;
