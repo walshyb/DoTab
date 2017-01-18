@@ -13,6 +13,7 @@ export default class AddTaskBar extends Component {
 
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSelectChange = this.handleSelectChange.bind(this);
+    this.setCategoryOption = this.setCategoryOption.bind(this);
     this.handleClick = this.handleClick.bind(this);
   };
 
@@ -71,8 +72,11 @@ export default class AddTaskBar extends Component {
     return categoryNames;
   };
 
-  setCategorySelect(categoryName) {
-
+  setCategoryOption(categoryName) {
+    this.setState({
+      currentCategory: categoryName,
+      displayAddCategoryField: false
+    });
   };
 
   render() {
@@ -90,7 +94,7 @@ export default class AddTaskBar extends Component {
           <option value='add-category'>Add Category</option>
         </select>
       
-        { this.state.displayAddCategoryField ? <AddCategory updateCategory={this.props.updateCategory} /> : null }
+        { this.state.displayAddCategoryField ? <AddCategory updateCategory={this.props.updateCategory} setCategoryOption={this.setCategoryOption}/> : null }
 
         <button id='add-task' onClick={this.handleClick}> + </button>
       </div>

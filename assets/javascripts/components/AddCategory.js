@@ -20,6 +20,7 @@ export default class AddCategory extends Component {
     data[key] = [];
 
     this.props.updateCategory(key, []);
+    this.props.setCategoryOption(key);
 
     this.setState({
       categoryFieldValue: ''
