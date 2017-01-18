@@ -12,5 +12,9 @@ const updateCategories = () => {
 
 // update individual category in chrome storage
 const updateCategory = ( categoryName, tasks) => {
-  return { type: UPDATE_CATEGORY };
+  return { type: UPDATE_CATEGORY, payload: { categoryName, tasks } };
+};
+
+export const task_manager_actions = {
+  updateCategories, updateCategory
 };
