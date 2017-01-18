@@ -12,7 +12,6 @@ export default class CategoryListItem extends Component {
   };
 
   removeTask(task) {
-    console.log(this.state);
     var index = this.state.tasks.indexOf(task);
 
     var newArray = this.props.tasks;
@@ -25,8 +24,6 @@ export default class CategoryListItem extends Component {
 
       chrome.storage.sync.set({ [this.props.categoryName] : newArray  });
     }
-
-    
   };
 
   componentWillMount() {
@@ -38,7 +35,7 @@ export default class CategoryListItem extends Component {
 
   render() {
     const tasks = this.props.tasks.map(function(task, i) {
-      return <Task key={`${this.props.categoryName}${i}`} text={task} taskId={i} removeTask={this.removeTask}/>;
+      return <Task key={`${task}${i}`} text={task} taskId={`${task}${i}`} removeTask={this.removeTask}/>;
     }.bind(this));
     return (
       <article className='category' id={this.props.categoryName}>

@@ -14,8 +14,10 @@ export default class Task extends Component {
   render() {
     return (
       <li>
-        <input type='checkbox' onChange={this.handleChange}/>
-        <span>{this.props.text}</span>
+        <label>
+          <input type='checkbox' onChange={this.handleChange} id={this.props.taskId}/>
+          <span>{this.props.text}</span>
+        </label>
       </li>
     );
   };
