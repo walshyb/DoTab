@@ -43,22 +43,20 @@ export default class AddTaskBar extends Component {
   handleSelectChange(event) {
     if(event.target.value !== '' && event.target.value !== 'add-category') {
 
-      console.log('not \'\' nor add-category');
-
       this.setState({
         currentCategory: event.target.value,
         displayAddCategoryField: false
       });
     } else if (event.target.value === 'add-category') {
 
-      console.log('is add-category');
-
       this.setState({
+        currentCategory: event.target.value,
         displayAddCategoryField: true
       });
     } else {
-      console.log('is not add-category');
+
       this.setState({
+        currentCategory: event.target.value,
         displayAddCategoryField: false
       });
     }
@@ -73,6 +71,10 @@ export default class AddTaskBar extends Component {
     return categoryNames;
   };
 
+  setCategorySelect(categoryName) {
+
+  };
+
   render() {
     return (
       <div id='add-task-bar'>
@@ -82,7 +84,7 @@ export default class AddTaskBar extends Component {
           onChange={this.handleInputChange}
           placeholder='What do you need to get done?' 
         />
-        <select id='select-category' onChange={this.handleSelectChange}>
+        <select id='select-category' value={this.state.currentCategory} onChange={this.handleSelectChange}>
           <option value=''>Category</option>
           { this.renderCategoryOptions() }
           <option value='add-category'>Add Category</option>
