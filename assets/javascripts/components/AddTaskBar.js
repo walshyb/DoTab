@@ -14,12 +14,13 @@ export default class AddTaskBar extends Component {
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSelectChange = this.handleSelectChange.bind(this);
     this.setCategoryOption = this.setCategoryOption.bind(this);
-    this.handleClick = this.handleClick.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   };
 
-  handleClick() {
+  handleSubmit(event) {
+    event.preventDefault();
     var categories = this.props.categories;
-    
+
     categories.map((category) => {
       var name = Object.keys(category)[0];
       if (name === this.state.currentCategory) {
@@ -82,21 +83,23 @@ export default class AddTaskBar extends Component {
   render() {
     return (
       <div id='add-task-bar'>
-        <input 
-          type='text' 
-          value={this.state.inputValue}
-          onChange={this.handleInputChange}
-          placeholder='What do you need to get done?' 
-        />
-        <select id='select-category' value={this.state.currentCategory} onChange={this.handleSelectChange}>
-          <option value=''>Category</option>
-          { this.renderCategoryOptions() }
-          <option value='add-category'>Add Category</option>
-        </select>
-      
-        { this.state.displayAddCategoryField ? <AddCategory updateCategory={this.props.updateCategory} setCategoryOption={this.setCategoryOption}/> : null }
+        <form onSubmit={this.handleSubmit}>
+          <input 
+            type='text' 
+            value={this.state.inputValue}
+            onChange={this.handleInputChange}
+            placeholder='What do you need to get done?' 
+          />
+          <select id='select-category' value={this.state.currentCategory} onChange={this.handleSelectChange}>
+            <option value=''>Category</option>
+            { this.renderCategoryOptions() }
+            <option value='add-category'>Add Category</option>
+          </select>
 
-        <button id='add-task' onClick={this.handleClick}> + </button>
+          { this.state.displayAddCategoryField ? <AddCategory updateCategory={this.props.updateCategory} setCategoryOption={this.setCategoryOption}/> : null }
+
+          <button type='submit' id='add-task' > + </button>
+        </form>
       </div>
     );
   };

@@ -18,12 +18,12 @@ gulp.task('apply-production', function() {
 });
 
 gulp.task('default', function() {
+  gulp.start('apply-production', 'javascripts', 'sass');
   gulp.watch('./assets/stylesheets/**/*.scss', ['sass']);
   gulp.watch('./assets/javascripts/**/*.js', ['javascripts']);
 });
 
 gulp.task('javascripts', function() {
-  console.log('in js');
   var bundler = browserify({
     entries: 'assets/javascripts/index.js',
   });
