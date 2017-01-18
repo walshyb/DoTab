@@ -18,7 +18,7 @@ h1 {
 /* adding tasks and categories */
 form {
   /* puts form at bottom of page*/
-  position: absolute;
+  position: fixed;
   bottom: 60px;
   display: flex; }
 
