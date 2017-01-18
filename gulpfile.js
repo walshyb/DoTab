@@ -2,6 +2,7 @@ var babelify = require('babelify');
 var browserify = require('browserify');
 var buffer = require('vinyl-buffer');
 var gulp = require('gulp');
+var imagemin = require('gulp-imagemin');
 var sass = require('gulp-sass');
 var source = require('vinyl-source-stream');
 var sourcemaps = require('gulp-sourcemaps');
@@ -13,13 +14,20 @@ gulp.task('sass', function() {
     .pipe(gulp.dest('./public/stylesheets/'));
 });
 
+gulp.task('images', function() {
+  return gulp.src('./assets/images/**')
+    .pipe(imagemin()) // Optimize
+    .pipe(gulp.dest('./public/images'))
+});
+
 gulp.task('apply-production', function() {
   process.env.NODE_ENV = 'production';
 });
 
 gulp.task('default', function() {
-  gulp.start('apply-production', 'javascripts', 'sass');
+  gulp.start('apply-production', 'javascripts', 'images', 'sass');
   gulp.watch('./assets/stylesheets/**/*.scss', ['sass']);
+  gulp.watch('./assets/images/**', ['images']);
   gulp.watch('./assets/javascripts/**/*.js', ['javascripts']);
 });
 
