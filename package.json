@@ -7,7 +7,7 @@
     "url": "https://github.com/walshyb/New-Tab-To-Do-List.git"
   },
   "license": "MIT",
-  "devDependencies": {
+  "dependencies": {
     "babel-preset-es2015": "*",
     "babel-preset-react": "*",
     "babelify":   "7.3.0",
@@ -19,6 +19,8 @@
     "gulp-uglify": "*",
     "react-dom": "*",
     "react": "*",
+    "react-redux": "^4.0.0",
+    "redux": "^3.6.0",
     "vinyl-buffer": "*",
     "vinyl-source-stream": "*"
   },

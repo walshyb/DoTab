@@ -1,17 +1,42 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import List from './components/List'
-import AddTask from './components/AddTask';
-import Category from './components/Category.js';
+import CategoryList from './components/CategoryList';
+import AddTaskBar from './components/AddTaskBar';
 
 export default class TaskManager extends Component {
 
   constructor(props) {
     super(props);
+
     this.state = {
-      categories: []
+      categories: [],
     };
-  }
+    
+    this.updateCategory = this.updateCategory.bind(this);
+    this.updateCategories();
+  };
+
+  updateCategories() {
+    chrome.storage.sync.get(null, function(categories) { 
+
+      var categoryArray = [];
+
+      for(var categoryKey in categories) {
+        var data = {};
+        data[categoryKey] = categories[categoryKey];
+        categoryArray.push(data);
+      }
+
+      this.setState({ categories: categoryArray }); 
+    }.bind(this)); 
+  };
+
+  updateCategory(categoryName, tasks) {
+    var data = {};
+    data[categoryName] = tasks;
+    chrome.storage.sync.set(data);
+    this.updateCategories();
+  };
 
   currentDate() {
     var date = new Date();
@@ -28,35 +53,15 @@ export default class TaskManager extends Component {
     return <h1>{dayOfWeek}, {month} {day}, {year} </h1>; 
   };
 
-  get categories() {
-    chrome.storage.sync.get(null, function(items) {   
-      var allKeys = Object.keys(items);               
-      return allKeys;
-    });          
-  };
-
-  componentWillMount() {
-    chrome.storage.sync.get(null, function(items) {   // get all keys from chrome storage
-      var allKeys = Object.keys(items);               // store them in list
-
-      this.setState( {categories: allKeys} );            // assign list of JSX objects to attribute 'categories'
-    }.bind(this));  
-
-    chrome.storage.sync.get(this.props.categoryName, function(tasks) {  
-      this.setState( {tasks: tasks} );            // assign list of JSX objects to attribute 'tasks'
-    }.bind(this));  
-  };
-
   render() {
     return (
       <div>
-      { this.currentDate() }
-      {
-        this.state.categories.map(function(category) {
-          return <Category categoryName={category}/>;
-        })
-      }
-      <AddTask categories={this.state.categories}/ > 
+        { this.currentDate() }
+        <CategoryList categories={this.state.categories} />
+        <AddTaskBar 
+          updateCategory={this.updateCategory}
+          categories={this.state.categories}
+        />
       </div> 
     );
 
