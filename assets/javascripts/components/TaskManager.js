@@ -1,42 +1,10 @@
 import React, { Component } from 'react';
 import CategoryList from './CategoryList';
 import AddTaskBar from './AddTaskBar';
+import { connect } from 'react-redux';
+import { task_manager_actions } from '../redux/actions/task_manager'
 
-export default class TaskManager extends Component {
-
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      categories: [],
-    };
-    
-    this.updateCategory = this.updateCategory.bind(this);
-    this.updateCategories();
-  };
-
-  updateCategories() {
-    chrome.storage.sync.get(null, function(categories) { 
-
-      var categoryArray = [];
-
-      for(var categoryKey in categories) {
-        var data = {};
-        data[categoryKey] = categories[categoryKey];
-        categoryArray.push(data);
-      }
-
-      this.setState({ categories: categoryArray }); 
-    }.bind(this)); 
-  };
-
-  updateCategory(categoryName, tasks) {
-    var data = {};
-    data[categoryName] = tasks;
-    chrome.storage.sync.set(data);
-    this.updateCategories();
-  };
-
+export class TaskManager extends Component {
   currentDate() {
     var date = new Date();
     const weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
@@ -52,14 +20,18 @@ export default class TaskManager extends Component {
     return <h1>{dayOfWeek}, {month} {day}, {year} </h1>; 
   };
 
+  componentWillMount () {
+    this.props.updateCategories();
+  };
+
   render() {
     return (
       <div>
         { this.currentDate() }
-        <CategoryList categories={this.state.categories} />
+        <CategoryList categories={this.props.categories} />
         <AddTaskBar 
-          updateCategory={this.updateCategory}
-          categories={this.state.categories}
+          updateCategory={this.props.updateCategory}
+          categories={this.props.categories}
         />
       </div> 
     );
@@ -67,3 +39,13 @@ export default class TaskManager extends Component {
   };
 }
 
+export default connect(
+  // map state to props
+  function( state ) {
+    return {
+      categories: state.task_manager.categories,
+    };
+  },
+  // map dispatch actions to props
+  task_manager_actions
+)( TaskManager );
