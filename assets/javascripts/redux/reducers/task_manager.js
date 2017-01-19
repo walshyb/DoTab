@@ -12,22 +12,9 @@ export default ( old_state = initial_state, action ) => {
 
     case UPDATE_CATEGORIES:
 
-      chrome.storage.sync.get(null, function(categories) { 
-
-        var categoryArray = [];     // categories will go here
-
-        for(var categoryKey in categories) {  
-
-          var data = { [categoryKey] : categories[categoryKey] };  // assemble object
-          categoryArray.push(data);     // push to array 
-        }
-
-        // TODO: implement thunk
-        return Object.assign({}, old_state, {   // i want to return array,
-          categories: categoryArray             // but i'm wrapped in a callback function
-        });
-
-      });
+      return {
+        categories: action.payload.categories
+      };
 
 
     case UPDATE_CATEGORY:
