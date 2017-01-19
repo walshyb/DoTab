@@ -7,6 +7,7 @@ const initial_state = {
   categories: []
 };
 
+/* Not much logic here because UPDATE_CATEGORIES and UPDATE_CATEGORY action creators are asynchronous, so the logic is there and a promise with the result gets sent here */
 export default ( old_state = initial_state, action ) => {
   switch ( action.type ) {
     case UPDATE_CATEGORIES:
