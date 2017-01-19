@@ -7,9 +7,10 @@ const chromep = new ChromePromise();
 const UPDATE_CATEGORIES = 'UPDATE_CATEGORIES';
 const UPDATE_CATEGORY = 'UPDATE_CATEGORY';
 
-/* Action Creators: */
+/* Util Functions */
 
 // update 'categories' state with new categories and their tasks
+// reusable function to get all categories and return them 
 const getAllCategories = (dispatch) => {
   // start chrome promise to get all categories and their tasks
   chromep.storage.sync.get(null).then(function(categories) { 
@@ -37,6 +38,8 @@ const getAllCategories = (dispatch) => {
     })
   );
 };
+
+/* Action Creators: */
 
 // update all categories in chrome storage
 const updateCategories = () => {

@@ -9,12 +9,10 @@ const initial_state = {
 
 export default ( old_state = initial_state, action ) => {
   switch ( action.type ) {
-
     case UPDATE_CATEGORIES:
       return {
         categories: action.payload.categories
       };
-
     case UPDATE_CATEGORY:
       return {
         categories: action.payload.categories
