@@ -11,11 +11,9 @@ export default ( old_state = initial_state, action ) => {
   switch ( action.type ) {
 
     case UPDATE_CATEGORIES:
-
       return {
         categories: action.payload.categories
       };
-
 
     case UPDATE_CATEGORY:
       var data = {};
@@ -35,6 +33,7 @@ export default ( old_state = initial_state, action ) => {
           categories: categoryArray
         });
       });
+
     default:
       return old_state;
   };
