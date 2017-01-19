@@ -3,22 +3,9 @@ import CategoryList from './CategoryList';
 import AddTaskBar from './AddTaskBar';
 import { connect } from 'react-redux';
 import { task_manager_actions } from '../redux/actions/task_manager'
+import { util } from '../utils';
 
 export class TaskManager extends Component {
-  currentDate() {
-    var date = new Date();
-    const weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-    var months = ["January", "February", "March", "April", "May", "June",
-      "July", "August", "September", "October", "November", "December"
-    ];
-
-    var dayOfWeek = weekdays[date.getDay()];
-    var month = months[date.getMonth()]; 
-    var day = date.getDate();
-    var year = date.getFullYear();
-
-    return <h1>{dayOfWeek}, {month} {day}, {year} </h1>; 
-  };
 
   componentWillMount () {
     this.props.updateCategories();
@@ -27,7 +14,7 @@ export class TaskManager extends Component {
   render() {
     return (
       <div>
-        { this.currentDate() }
+        <h1> { util.getCurrentDate() } </h1>
         <CategoryList categories={this.props.categories} />
         <AddTaskBar 
           updateCategory={this.props.updateCategory}
