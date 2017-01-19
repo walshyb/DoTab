@@ -16,24 +16,9 @@ export default ( old_state = initial_state, action ) => {
       };
 
     case UPDATE_CATEGORY:
-      var data = {};
-      data[action.payload.categoryName] = action.payload.tasks;
-      chrome.storage.sync.set(data);
-
-      chrome.storage.sync.get(null, function(categories) {
-        var categoryArray = [];
-
-        for(var categoryKey in categories) {
-          var data = {};
-          data[categoryKey] = categories[categoryKey];
-          categoryArray.push(data);
-        }
-
-        return Object.assign({}, old_state, {
-          categories: categoryArray
-        });
-      });
-
+      return {
+        categories: action.payload.categories
+      };
     default:
       return old_state;
   };
