@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Task from './Task';
+import { connect } from 'react-redux';
+import { category_list_item_actions } from '../redux/actions/category_list_item';
 
 export default class CategoryListItem extends Component {
   constructor(props) {
