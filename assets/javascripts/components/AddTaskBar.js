@@ -1,32 +1,24 @@
 import React, { Component } from 'react';
 import AddCategory from './AddCategory';
+import { connect } from 'react-redux';
+import { add_task_bar_actions } from '../redux/actions/add_task_bar';
 
-export default class AddTaskBar extends Component {
+export class AddTaskBar extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      inputValue: '',
-      currentCategory: '',
-      displayAddCategoryField: false
-    };
-
-    this.handleInputChange = this.handleInputChange.bind(this);
-    this.handleSelectChange = this.handleSelectChange.bind(this);
-    this.setCategoryOption = this.setCategoryOption.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   };
-
   handleSubmit(event) {
     event.preventDefault();
     var categories = this.props.categories;
 
     categories.map((category) => {
       var name = Object.keys(category)[0];
-      if (name === this.state.currentCategory) {
+      if (name === this.props.currentCategory) {
 
         var tasks = category[name];
-        tasks.push(this.state.inputValue);
+        tasks.push(this.props.inputValue);
         this.props.updateCategory(name, tasks);
 
         this.setState({
@@ -34,34 +26,6 @@ export default class AddTaskBar extends Component {
         });
       }
     });
-  };
-
-  handleInputChange(event) {
-    this.setState({
-      inputValue: event.target.value
-    });
-  };
-
-  handleSelectChange(event) {
-    if(event.target.value !== '' && event.target.value !== 'add-category') {
-
-      this.setState({
-        currentCategory: event.target.value,
-        displayAddCategoryField: false
-      });
-    } else if (event.target.value === 'add-category') {
-
-      this.setState({
-        currentCategory: event.target.value,
-        displayAddCategoryField: true
-      });
-    } else {
-
-      this.setState({
-        currentCategory: event.target.value,
-        displayAddCategoryField: false
-      });
-    }
   };
 
   renderCategoryOptions() {
@@ -86,17 +50,17 @@ export default class AddTaskBar extends Component {
         <form onSubmit={this.handleSubmit}>
           <input 
             type='text' 
-            value={this.state.inputValue}
-            onChange={this.handleInputChange}
+            value={this.props.inputValue}
+            onChange={this.props.handleInputChange}
             placeholder='What do you need to get done?' 
           />
-          <select id='select-category' value={this.state.currentCategory} onChange={this.handleSelectChange}>
+          <select id='select-category' value={this.props.currentCategory} onChange={this.props.handleSelectChange}>
             <option value=''>Category</option>
             { this.renderCategoryOptions() }
             <option value='add-category'>Add Category</option>
           </select>
 
-          { this.state.displayAddCategoryField ? <AddCategory updateCategory={this.props.updateCategory} setCategoryOption={this.setCategoryOption}/> : null }
+          { this.props.displayAddCategoryField ? <AddCategory updateCategory={this.props.updateCategory} setCategoryOption={this.setCategoryOption}/> : null }
 
           <button type='submit' id='add-task' > + </button>
         </form>
@@ -109,3 +73,16 @@ AddTaskBar.propTypes = {
   updateCategory: React.PropTypes.func.isRequired,
   categories: React.PropTypes.array.isRequired
 };
+
+export default connect(
+  // map state to props
+  function( state ) {
+    return {
+      inputValue: state.add_task_bar.inputValue,
+      currentCategory: state.add_task_bar.currentCategory,
+      displayAddCategoryField: state.add_task_bar.displayAddCategoryField
+    };
+  },
+  // map dispatch actions to props
+  add_task_bar_actions
+)( AddTaskBar );
