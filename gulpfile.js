@@ -36,7 +36,7 @@ gulp.task('javascripts', function() {
     entries: 'assets/javascripts/index.js',
   });
 
-  bundler.transform(babelify, {presets: ["es2015", "react"]});
+  bundler.transform(babelify, {presets: ["es2015", "react", "stage-2"]});
 
   return bundler.bundle()
     .on('error', function (err) { console.log(err); this.emit('end'); })
