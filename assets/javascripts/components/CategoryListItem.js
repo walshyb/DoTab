@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import Task from './Task';
-import { connect } from 'react-redux';
-import { category_list_item_actions } from '../redux/actions/category_list_item';
 
 export default class CategoryListItem extends Component {
   constructor(props) {
@@ -11,15 +9,10 @@ export default class CategoryListItem extends Component {
 
   removeTask(task) {
     var index = this.props.tasks.indexOf(task);
-
     var newArray = this.props.tasks;
 
     if (index > -1 ) {
       newArray.splice(index, 1);
-      this.setState({
-        tasks: newArray
-      });
-
       this.props.updateCategory(this.props.categoryName, newArray);
     }
   };
