@@ -15,7 +15,10 @@ export class TaskManager extends Component {
     return (
       <div>
         <h1> { util.getCurrentDate() } </h1>
-        <CategoryList categories={this.props.categories} />
+        <CategoryList 
+          updateCategory={this.props.updateCategory}
+          categories={this.props.categories} 
+        />
         <AddTaskBar 
           updateCategory={this.props.updateCategory}
           categories={this.props.categories}

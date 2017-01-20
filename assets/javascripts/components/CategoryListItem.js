@@ -6,15 +6,11 @@ import { category_list_item_actions } from '../redux/actions/category_list_item'
 export default class CategoryListItem extends Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      tasks: []
-    };
     this.removeTask = this.removeTask.bind(this);
   };
 
   removeTask(task) {
-    var index = this.state.tasks.indexOf(task);
+    var index = this.props.tasks.indexOf(task);
 
     var newArray = this.props.tasks;
 
@@ -24,15 +20,8 @@ export default class CategoryListItem extends Component {
         tasks: newArray
       });
 
-      chrome.storage.sync.set({ [this.props.categoryName] : newArray  });
+      this.props.updateCategory(this.props.categoryName, newArray);
     }
-  };
-
-  componentWillMount() {
-    this.setState({
-      tasks: this.props.tasks
-    });
-    
   };
 
   render() {
@@ -47,5 +36,3 @@ export default class CategoryListItem extends Component {
     );
   };  
 }
-
-

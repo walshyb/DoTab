@@ -11,10 +11,11 @@ export default class CategoryList extends Component {
         <CategoryListItem 
           key={categoryName} 
           tasks={tasks}  
+          updateCategory={this.props.updateCategory}
           categoryName={categoryName} 
         />
       );
-    });
+    }.bind(this));
 
     return (
       <div id='category-list'> 
