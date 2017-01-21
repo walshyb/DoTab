@@ -1,18 +1,31 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
+import { compose, createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 
 import TaskManager from './components/TaskManager';
 import reducers from './redux/rootReducer';
 
-const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
-
+//const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
 //const store = createStore(reducers, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
+// TODO: add check to see if env is production or development and implement redux dev 
+// tools code appropriately
+var initialState = { categories: [] };
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?
+  window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
+  }) :
+  compose;
+const enhancer = composeEnhancers(
+  applyMiddleware(thunk)
+);
+
+const store = createStore(reducers, initialState, enhancer);
+
 ReactDOM.render(
-  <Provider store={ createStoreWithMiddleware(reducers) }>
+  <Provider store={ createStoreWithMiddleware(reducers)  }>
     <TaskManager />
   </Provider>
   , document.getElementById('app'));

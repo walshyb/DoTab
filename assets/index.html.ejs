@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>✔︎ To-Do List </title>
+    <link href="https://fonts.googleapis.com/css?family=Cabin" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="stylesheets/main.css"/>
+  </head>
+  <body>
+    <div id="app">
+    </div>
+    <%if (env === 'production') { %>
+      <script src="javascripts/app.js"></script>
+    <% } else { %>
+      <script src="chrome-extension://lmhkpmbekcpmknklioeibfkpmmfibljd/js/redux-devtools-extension.js"></script>
+      <script src="http://localhost:3000/javascripts/app.js"></script>
+    <% } %>
+  </body>
+</html>

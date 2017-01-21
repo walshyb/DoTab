@@ -6,11 +6,12 @@
   "authors": [{
     "name": "Brandon Walsh"
   }, {
-    "name": "Shauna Keating"
+  "name": "Shauna Keating"
   }],
   "description":  "Chrome Extension to keep track of To-Dos in new tabs.",
   "icons": { },
   "homepage_url": "https://github.com/walshyb/New-Tab-To-Do-List",
   "chrome_url_overrides": { "newtab": "index.html" },
-  "permissions": [ "storage" ]
+  "permissions": [ "storage" ],
+  "content_security_policy": "default-src 'self'; script-src 'self' http://localhost:3000 https://localhost:3000 'unsafe-eval'; connect-src http://localhost:3000 https://localhost:3000; style-src * 'unsafe-inline' 'self' blob:; img-src 'self' data:; font-src * 'self';"
 }

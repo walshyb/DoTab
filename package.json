@@ -6,6 +6,10 @@
     "type": "git",
     "url": "https://github.com/walshyb/New-Tab-To-Do-List.git"
   },
+  "main": "gulpfile.js",
+  "scripts": {
+    "server": "node server/app"
+  },
   "license": "MIT",
   "dependencies": {
     "chrome-promise": "^2.0.2",
@@ -23,9 +27,11 @@
     "express": "^4.14.0",
     "browserify": "^13.0.0",
     "gulp":       "^3.9.1",
+    "gulp-ejs": "*",
     "gulp-imagemin": "^2.4.0",
     "gulp-sass": "^2.3.2",
     "gulp-sourcemaps": "*",
+    "gulp-rename": "*",
     "gulp-watch": "^4.3.10",
     "gulp-uglify": "*",
     "vinyl-buffer": "*",
