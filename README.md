@@ -26,7 +26,7 @@ gulp
 ```
 
 ## Environments
-Development environment is enabled by default. This allows use of Chrome's Redux Dev Tools extension by including using Express to locally serve the Browserify's bundled result.
+Development environment is enabled by default. This allows use of [redux-dev-tools-extension](https://github.com/zalmoxisus/redux-devtools-extension) by including using Express to locally serve the Browserify's bundled result.
 
 ```
 # Build in production environment and serve static bundle
