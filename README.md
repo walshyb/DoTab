@@ -4,12 +4,12 @@ A task manager to manage your to-dos and your life every time you open a new tab
 
 ## Features
 
-[x] Create lists
-[x] Add Tasks
-[x] Check off tasks
-[ ] Archive tasks
-[ ] Search all tasks (completed and active)
-[ ] Settings
+- [x] Create lists
+- [x] Add Tasks
+- [x] Check off tasks
+- [ ] Archive tasks
+- [ ] Search all tasks (completed and active)
+- [ ] Settings
 
 ## Making Changes
 
@@ -31,11 +31,10 @@ Development environment is enabled by default. This allows use of Chrome's Redux
 ```
 # Build in production environment and serve static bundle
 gulp production 
-
 ```
 
 ## Architecture
-
+```
 `package.json` : List of dependencies and dev dependencies
 `gulpfile.js`  : Automate compilation of assets and watch for changes
 `server/app.js`: Node script to host Browserify's bundle locally
@@ -45,3 +44,4 @@ gulp production
 `assets/stylesheets`: Sass componenets
 `assets/index.html.ejs`: HTML file with EJS to include scripts based on environment
 `public/`: Visible after compiling assets with gulp; Same directory architecture as `assets/` (except manifest is in root)
+```
