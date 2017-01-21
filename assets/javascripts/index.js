@@ -25,7 +25,7 @@ const enhancer = composeEnhancers(
 const store = createStore(reducers, initialState, enhancer);
 
 ReactDOM.render(
-  <Provider store={ createStoreWithMiddleware(reducers)  }>
+  <Provider store={ store  }>
     <TaskManager />
   </Provider>
   , document.getElementById('app'));
