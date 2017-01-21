@@ -35,13 +35,13 @@ gulp production
 
 ## Architecture
 ```
-`package.json` : List of dependencies and dev dependencies
-`gulpfile.js`  : Automate compilation of assets and watch for changes
-`server/app.js`: Node script to host Browserify's bundle locally
-`assets/chrome` : Dev and prodution manifests for Chrome extension
-`assets/javascripts`: React components and Redux actions & reducers
-`assets/images`: Background image and icons
-`assets/stylesheets`: Sass componenets
-`assets/index.html.ejs`: HTML file with EJS to include scripts based on environment
-`public/`: Visible after compiling assets with gulp; Same directory architecture as `assets/` (except manifest is in root)
+package.json         : List of dependencies and dev dependencies
+gulpfile.js          : Automate compilation of assets and watch for changes
+server/app.js        : Node script to host Browserify's bundle locally
+assets/chrome        : Dev and prodution manifests for Chrome extension
+assets/javascripts   : React components and Redux actions & reducers
+assets/images        : Background image and icons
+assets/stylesheets   : Sass componenets
+assets/index.html.ejs: HTML file with EJS to include scripts based on environment
+public/              : Visible after compiling assets with gulp; Same directory architecture as `assets/` (except manifest is in root)
 ```
