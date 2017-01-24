@@ -21,7 +21,7 @@ const handleInputChange = (event) => {
 const handleSubmit = (event, props) => {
   return {
     type: ADD_CATEGORY,
-    payload: { props }
+    payload: { props, event }
   };
 };
 

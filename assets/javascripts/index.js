@@ -12,7 +12,11 @@ import reducers from './redux/rootReducer';
 
 // TODO: add check to see if env is production or development and implement redux dev 
 // tools code appropriately
-var initialState = { categories: [] };
+var initialState = { task_manager: reducers.task_manager, add_task_bar:  {
+  inputValue: '',
+  currentCategory: '',
+  displayAddCategoryField: false
+} };
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?
   window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({

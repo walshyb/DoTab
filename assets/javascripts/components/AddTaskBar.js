@@ -10,22 +10,7 @@ export class AddTaskBar extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   };
   handleSubmit(event) {
-    event.preventDefault();
-    var categories = this.props.categories;
-
-    categories.map((category) => {
-      var name = Object.keys(category)[0];
-      if (name === this.props.currentCategory) {
-
-        var tasks = category[name];
-        tasks.push(this.props.inputValue);
-        this.props.updateCategory(name, tasks);
-
-        this.setState({
-          inputValue: '',
-        });
-      }
-    });
+    this.props.handleSubmit(event, this.props);
   };
 
   renderCategoryOptions() {
@@ -35,13 +20,6 @@ export class AddTaskBar extends Component {
     });
 
     return categoryNames;
-  };
-
-  setCategoryOption(categoryName) {
-    this.setState({
-      currentCategory: categoryName,
-      displayAddCategoryField: false
-    });
   };
 
   render() {
