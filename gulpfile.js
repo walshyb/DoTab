@@ -70,14 +70,22 @@ gulp.task('javascripts', function() {
 
   bundler.transform(babelify, {presets: ["es2015", "react", "stage-2"]});
 
-  return bundler.bundle()
-    .on('error', function (err) { console.log(err); this.emit('end'); })
-    .pipe(source('app.js'))
-    .pipe(buffer())
-    .pipe(sourcemaps.init({ loadMaps: true }))
-    .pipe(uglify())
-    .pipe(sourcemaps.write('./'))
-    .pipe(gulp.dest('public/javascripts/'));
+  if (process.env.NODE_ENV !== 'production')
+    return bundler.bundle()
+      .on('error', function (err) { console.log(err); this.emit('end'); })
+      .pipe(source('app.js'))
+      .pipe(buffer())
+      .pipe(gulp.dest('public/javascripts/'));
+  else 
+    return bundler.bundle()
+      .on('error', function (err) { console.log(err); this.emit('end'); })
+      .pipe(source('app.js'))
+      .pipe(buffer())
+      .pipe(sourcemaps.init({ loadMaps: true }))
+      .pipe(uglify())
+      .pipe(sourcemaps.write('./'))
+      .pipe(gulp.dest('public/javascripts/'));
+
 
 });
 
