@@ -13,11 +13,11 @@ export default ( old_state = initial_state, action ) => {
         inputValue: action.payload.event.target.value
       };
     case ADD_CATEGORY:
-      var key = old_state.categoryFieldValue;
+      var key = old_state.inputValue;
       var data = { [key] : [] };
       var props = action.payload.props;
 
-      props.updateCategory(data);
+      props.updateCategory(key, []);
       //props.setCategoryOption(key);
 
       return {
