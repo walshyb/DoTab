@@ -1,43 +1,33 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { add_category_actions } from '../redux/actions/add_category'
 
-export default class AddCategory extends Component {
+export class AddCategory extends Component {
+
   constructor(props) {
     super(props);
-    this.state = {
-      categoryFieldValue: ''
-    };
-
-    this.handleChange = this.handleChange.bind(this);
-    this.handleClick = this.handleClick.bind(this);
+    this.handleAddCategoryClick = this.handleAddCategoryClick.bind(this);
   };
 
-  handleClick(event) {
-
-    //var data = { toString(this.state.value): toString(this.state.value)};
-    var key = this.state.categoryFieldValue; 
-    var data = {};
-    data[key] = [];
-
-    this.props.updateCategory(key, []);
-    this.props.setCategoryOption(key);
-
-    this.setState({
-      categoryFieldValue: ''
-    });
+  handleAddCategoryClick(event) {
+    this.props.handleAddCategoryClick(event, this.props);
   };
-
-  handleChange(event) {
-    this.setState(
-      {categoryFieldValue: event.target.value
-    });
-  }
 
   render() {
     return (
       <div id='add-category'>
-        <input type='text' value={this.state.value} onChange={this.handleChange} placeholder='Category'/>
-        <button onClick={this.handleClick}> Add Category </button>
+        <input type='text' value={this.props.inputValue} onChange={this.props.handleChange} placeholder='Category'/>
+        <button onClick={this.handleAddCategoryClick}> Add Category </button>
       </div>
     ); 
   };
 }
+
+export default connect (
+  function ( state ) {
+    return {
+      inputValue: state.add_category.inputValue
+    };
+  },
+  add_category_actions
+)( AddCategory );

@@ -1,8 +1,8 @@
 /* AddTaskBar Reducer */
 
 const SET_CURRENT_CATEGORY = 'SET_CURRENT_CATEGORY';
-const SET_INPUT_VALUE = 'SET_INPUT_VALUE';
-const ADD_CATEGORY = 'ADD_CATEGORY'; 
+const SET_TASK_TEXT = 'SET_TASK_TEXT';
+const ADD_TASK = 'ADD_TASK'; 
 
 const initial_state = {
   inputValue: '',
@@ -35,12 +35,12 @@ export default ( old_state = initial_state, action ) => {
         };
       }
 
-    case SET_INPUT_VALUE:
+    case SET_TASK_TEXT:
       return {
         ...old_state,
         inputValue: action.payload.inputValue
       };
-    case ADD_CATEGORY:
+    case ADD_TASK:
       action.payload.event.preventDefault();
       var categories = action.payload.props.categories;
       var props = action.payload.props;
