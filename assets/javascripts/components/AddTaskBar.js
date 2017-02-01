@@ -8,7 +8,17 @@ export class AddTaskBar extends Component {
     super(props);
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+
+    this.state = {
+      taskText: ''
+    };
   };
+
+  handleChange(event) {
+    this.setState({ taskText: event.target.value });
+  };
+
   handleSubmit(event) {
     this.props.handleSubmit(event, this.props);
   };
@@ -28,8 +38,8 @@ export class AddTaskBar extends Component {
         <form onSubmit={this.handleSubmit}>
           <input 
             type='text' 
-            value={this.props.inputValue}
-            onChange={this.props.handleInputChange}
+            value={this.state.taskText}
+            onChange={this.handleChange}
             placeholder='What do you need to get done?' 
           />
           <select id='select-category' value={this.props.currentCategory} onChange={this.props.handleSelectChange}>
@@ -38,7 +48,14 @@ export class AddTaskBar extends Component {
             <option value='add-category'>Add Category</option>
           </select>
 
-          { this.props.displayAddCategoryField ? <AddCategory updateCategory={this.props.updateCategory} setCategoryOption={this.setCategoryOption}/> : null }
+          { this.props.displayAddCategoryField ? 
+              <AddCategory 
+                updateCategory={this.props.updateCategory} 
+                setCategoryOption={this.setCategoryOption}
+                categoryFieldValue={this.props.categoryFieldValue}
+              /> 
+              : null 
+          }
 
           <button type='submit' id='add-task' > + </button>
         </form>
@@ -56,9 +73,9 @@ export default connect(
   // map state to props
   function( state ) {
     return {
-      inputValue: state.add_task_bar.inputValue,
+      categoryFieldValue: state.add_task_bar.categoryFieldValue,
       currentCategory: state.add_task_bar.currentCategory,
-      displayAddCategoryField: state.add_task_bar.displayAddCategoryField
+      displayAddCategoryField: state.add_task_bar.displayAddCategoryField,
     };
   },
   // map dispatch actions to props

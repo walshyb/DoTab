@@ -2,10 +2,13 @@
 
 const SET_CURRENT_CATEGORY = 'SET_CURRENT_CATEGORY';
 const SET_TASK_TEXT = 'SET_TASK_TEXT';
-const ADD_TASK = 'ADD_TASK'; 
+const ADD_TASK = 'ADD_TASK';
+
+const SET_CATEGORY_NAME = 'SET_CATEGORY_NAME';
+const ADD_CATEGORY = 'ADD_CATEGORY';
 
 const initial_state = {
-  inputValue: '',
+  categoryFieldValue: '',
   currentCategory: '',
   displayAddCategoryField: false
 };
@@ -25,7 +28,8 @@ export default ( old_state = initial_state, action ) => {
         return {
           ...old_state,
           currentCategory: value,
-          displayAddCategoryField: true
+          displayAddCategoryField: true,
+          categoryFieldValue: ''
         };
       } else {
         return {
@@ -34,12 +38,6 @@ export default ( old_state = initial_state, action ) => {
           displayAddCategoryField: false
         };
       }
-
-    case SET_TASK_TEXT:
-      return {
-        ...old_state,
-        inputValue: action.payload.inputValue
-      };
     case ADD_TASK:
       action.payload.event.preventDefault();
       var categories = action.payload.props.categories;
@@ -50,17 +48,18 @@ export default ( old_state = initial_state, action ) => {
         if (name === old_state.currentCategory) {
 
           var tasks = category[name];
-          tasks.push(props.inputValue);
+          tasks.push(props.taskFieldValue);
           props.updateCategory(name, tasks);
 
           return {
             ...old_state,
-            inputValue: ''
+            taskFieldValue: ''
           };
         } else {
           return old_state;
         }
       });
+
     default:
       return old_state;
   };
