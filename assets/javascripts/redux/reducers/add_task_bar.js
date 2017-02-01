@@ -45,7 +45,7 @@ export default ( old_state = initial_state, action ) => {
         if (name === old_state.currentCategory) {
 
           var tasks = category[name];
-          tasks.push(props.taskFieldValue);
+          tasks.push(action.play.load.taskText);
           props.updateCategory(name, tasks);
 
           return {

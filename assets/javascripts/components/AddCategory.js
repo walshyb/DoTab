@@ -18,8 +18,6 @@ export default class AddCategory extends Component {
     this.setState({ categoryName: event.target.value });
   };
 
-
-  // this invokes ADD_TASK, we don't want that
   handleClick(event) {
     var key = this.state.categoryName;
     var data = { [key] : [] };

@@ -19,10 +19,10 @@ const handleInputChange = (event) => {
   };
 };
 
-const handleSubmit = (event, props) => {
+const handleSubmit = (taskText, props) => {
   return {
     type: ADD_TASK,
-    payload: { props, event }
+    payload: { taskText, props }
   };
 };
 

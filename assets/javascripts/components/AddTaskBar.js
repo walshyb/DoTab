@@ -19,8 +19,22 @@ export class AddTaskBar extends Component {
     this.setState({ taskText: event.target.value });
   };
 
+  // add task
   handleSubmit(event) {
-    this.props.handleSubmit(event, this.props);
+    event.preventDefault();
+    var categories = this.props.categories;
+
+    categories.map((category) => {
+      var name = Object.keys(category)[0];
+      if (name === old_state.currentCategory) {
+
+        var tasks = category[name];
+        tasks.push(this.state.taskText);
+        props.updateCategory(name, tasks);
+
+        this.setState({ taskText: '' });
+      } 
+    });
   };
 
   renderCategoryOptions() {
