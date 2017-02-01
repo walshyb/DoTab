@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import AddTask from './AddTask'
 import Task from './Task';
 
 export default class CategoryListItem extends Component {
@@ -26,7 +27,7 @@ export default class CategoryListItem extends Component {
         <h2> {this.props.categoryName} </h2>
         <ul> { tasks } </ul>
 
-        <AddTaskBar 
+        <AddTask 
           updateCategory={this.props.updateCategory}
           categoryName={this.props.categoryName}
           tasks={this.props.tasks}
