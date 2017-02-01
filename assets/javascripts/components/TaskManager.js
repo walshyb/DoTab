@@ -19,13 +19,8 @@ export class TaskManager extends Component {
           updateCategory={this.props.updateCategory}
           categories={this.props.categories} 
         />
-        <AddTaskBar 
-          updateCategory={this.props.updateCategory}
-          categories={this.props.categories}
-        />
       </div> 
     );
-
   };
 }
 
