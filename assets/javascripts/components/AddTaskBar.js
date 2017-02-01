@@ -51,8 +51,7 @@ export class AddTaskBar extends Component {
           { this.props.displayAddCategoryField ? 
               <AddCategory 
                 updateCategory={this.props.updateCategory} 
-                setCategoryOption={this.setCategoryOption}
-                categoryFieldValue={this.props.categoryFieldValue}
+                updateCategoryOption={this.props.updateCategoryOption}
               /> 
               : null 
           }

@@ -1,14 +1,11 @@
 /* AddTaskBar Reducer */
 
 const SET_CURRENT_CATEGORY = 'SET_CURRENT_CATEGORY';
+const UPDATE_CURRENT_CATEGORY = 'UPDATE_CURRENT_CATEGORY';
 const SET_TASK_TEXT = 'SET_TASK_TEXT';
 const ADD_TASK = 'ADD_TASK';
 
-const SET_CATEGORY_NAME = 'SET_CATEGORY_NAME';
-const ADD_CATEGORY = 'ADD_CATEGORY';
-
 const initial_state = {
-  categoryFieldValue: '',
   currentCategory: '',
   displayAddCategoryField: false
 };
@@ -59,6 +56,12 @@ export default ( old_state = initial_state, action ) => {
           return old_state;
         }
       });
+    case UPDATE_CURRENT_CATEGORY:
+      return {
+        ...old_state,
+        currentCategory: action.payload.categoryName,
+        displayAddCategoryField: false
+      };
 
     default:
       return old_state;

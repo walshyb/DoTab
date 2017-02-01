@@ -25,6 +25,7 @@ export default class AddCategory extends Component {
     var data = { [key] : [] };
 
     this.props.updateCategory(key, []);
+    this.props.updateCategoryOption(key);
 
     this.setState( { categoryName: '' });
   };
