@@ -1,4 +1,4 @@
-/* Task Manager Reducer */
+/* List Manager Reducer */
 
 const UPDATE_CATEGORIES = 'UPDATE_CATEGORIES';
 const UPDATE_CATEGORY = 'UPDATE_CATEGORY';

@@ -58,6 +58,6 @@ const updateCategory = ( categoryName, tasks) => {
   }
 };
 
-export const task_manager_actions = {
+export const list_manager_actions = {
   updateCategories, updateCategory
 };

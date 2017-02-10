@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import CategoryList from './CategoryList';
 import AddTaskBar from './AddTaskBar';
 import { connect } from 'react-redux';
-import { task_manager_actions } from '../redux/actions/task_manager'
+import { list_manager_actions } from '../redux/actions/list_manager'
 import { util } from '../utils';
 
-export class TaskManager extends Component {
+export class ListManager extends Component {
 
   componentWillMount () {
     this.props.updateCategories();
@@ -33,9 +33,9 @@ export default connect(
   // map state to props
   function( state ) {
     return {
-      categories: state.task_manager.categories,
+      categories: state.list_manager.categories,
     };
   },
   // map dispatch actions to props
-  task_manager_actions
-)( TaskManager );
+  list_manager_actions
+)( ListManager );

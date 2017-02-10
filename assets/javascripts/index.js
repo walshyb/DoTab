@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { compose, createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 
-import TaskManager from './components/TaskManager';
+import ListManager from './components/ListManager';
 import reducers from './redux/rootReducer';
 
 //const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
@@ -12,7 +12,7 @@ import reducers from './redux/rootReducer';
 
 // TODO: add check to see if env is production or development and implement redux dev 
 // tools code appropriately
-var initialState = { task_manager: reducers.task_manager, add_task_bar:  {
+var initialState = { list_manager: reducers.list_manager, add_task_bar:  {
   inputValue: '',
   currentCategory: '',
   displayAddCategoryField: false
@@ -30,7 +30,7 @@ const store = createStore(reducers, initialState, enhancer);
 
 ReactDOM.render(
   <Provider store={ store  }>
-    <TaskManager />
+    <ListManager />
   </Provider>
   , document.getElementById('app'));
 
