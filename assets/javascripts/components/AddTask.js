@@ -1,24 +1,13 @@
 import React, { Component } from 'react';
 
 export default class AddTask extends Component {
-  constructor(props) {
-    super(props);
+  state = { taskText: '' };
 
-    this.addTask = this.addTask.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-
-    this.state = {
-      taskText: ''
-    };
-  };
-
-  handleChange(event) {
+  handleChange = ( event ) => {
     this.setState({ taskText: event.target.value });
   };
 
-  addTask(event) {
-    event.preventDefault();
-
+  addTask = () => {
     var tasks = this.props.tasks;
     tasks.push(this.state.taskText);
     this.props.updateCategory(this.props.categoryName, tasks);
@@ -26,18 +15,23 @@ export default class AddTask extends Component {
     this.setState({ taskText: '' });
   };
 
+  inputKey = ( e ) => {
+    if( e.keyCode === 13 ) {
+      this.addTask();
+    }
+  };
+
   render() {
     return (
-      <div className='add-task'>
-        <form onSubmit={this.addTask}>
-          <input 
-            type='text' 
-            value={this.state.taskText}
-            onChange={this.handleChange}
-            placeholder='What do you need to get done?' 
-          />
-        <button type='submit' id='add-task' > + </button>
-        </form>
+      <div className='category-add-task'>
+        <input 
+          type='text' 
+          value={this.state.taskText}
+          onChange={this.handleChange}
+          onKeyDown={this.inputKey}
+          placeholder='What do you need to get done?' 
+        />
+        <button id='add-task' onClick={this.addTask} > + </button>
       </div>
     );
   };
