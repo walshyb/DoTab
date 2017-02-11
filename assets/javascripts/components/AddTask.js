@@ -11,7 +11,12 @@ export class AddTask extends Component {
 
   addTask = () => {
     var tasks = this.props.tasks;
-    tasks.push(this.state.taskText);
+    var task = {
+      id: Date.now(),
+      text: this.state.taskText,
+      status: 'active',
+    };
+    tasks.push(task);
     this.props.updateCategory(this.props.categoryName, tasks);
 
     this.setState({ taskText: '' });

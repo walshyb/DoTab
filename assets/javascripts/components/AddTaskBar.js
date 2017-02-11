@@ -29,7 +29,12 @@ export class AddTaskBar extends Component {
       if (name === old_state.currentCategory) {
 
         var tasks = category[name];
-        tasks.push(this.state.taskText);
+        var task = {
+          id: Date.now(),
+          text: this.state.taskText,
+          status: 'active',
+        };
+        tasks.push(task);
         props.updateCategory(name, tasks);
 
         this.setState({ taskText: '' });

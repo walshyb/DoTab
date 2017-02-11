@@ -20,7 +20,7 @@ export default class CategoryListItem extends Component {
 
   render() {
     const tasks = this.props.tasks.map(function(task, i) {
-      return <Task key={`${task}${i}${Date.now()}`} text={task} taskId={`${task}${i}`} removeTask={this.removeTask}/>;
+      return <Task key={task.id} text={task.text} taskId={task.id} removeTask={this.removeTask}/>;
     }.bind(this));
     return (
       <article className='category' id={this.props.categoryName}>
