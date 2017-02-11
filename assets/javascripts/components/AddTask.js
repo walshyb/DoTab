@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { add_task_actions } from '../redux/actions/add_task';
 
-export default class AddTask extends Component {
+export class AddTask extends Component {
   state = { taskText: '' };
 
   handleChange = ( event ) => {
@@ -13,6 +15,8 @@ export default class AddTask extends Component {
     this.props.updateCategory(this.props.categoryName, tasks);
 
     this.setState({ taskText: '' });
+
+    this.props.addTask('');
   };
 
   inputKey = ( e ) => {
@@ -36,3 +40,14 @@ export default class AddTask extends Component {
     );
   };
 }
+
+export default connect(
+  // map state to props
+  function( state ) {
+    return {
+      arch: state.add_task.arch,
+    };
+  },
+  // map dispatch actions to props
+  add_task_actions
+)( AddTask );
