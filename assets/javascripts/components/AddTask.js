@@ -10,6 +10,7 @@ export class AddTask extends Component {
   };
 
   addTask = () => {
+    if(this.state.taskText != '') {
     var tasks = this.props.tasks;
     var task = {
       id: Date.now(),
@@ -21,7 +22,9 @@ export class AddTask extends Component {
 
     this.setState({ taskText: '' });
 
-    this.props.addTask('');
+
+      this.props.addTask('');
+    }
   };
 
   inputKey = ( e ) => {
