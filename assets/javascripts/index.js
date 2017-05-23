@@ -12,25 +12,25 @@ import reducers from './redux/rootReducer';
 
 // TODO: add check to see if env is production or development and implement redux dev 
 // tools code appropriately
-var initialState = { list_manager: reducers.list_manager, add_task_bar:  {
-  inputValue: '',
-  currentCategory: '',
-  displayAddCategoryField: false
-} };
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?
-  window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
-  }) :
-  compose;
-const enhancer = composeEnhancers(
-  applyMiddleware(thunk)
-);
+chrome.storage.sync.get('state', function(s) {
+  const { state } = s;
+  var initialState = state;
 
-const store = createStore(reducers, initialState, enhancer);
+  const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?
+    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
+    }) :
+    compose;
+  const enhancer = composeEnhancers(
+    applyMiddleware(thunk)
+  );
 
-ReactDOM.render(
-  <Provider store={ store  }>
-    <ListManager />
-  </Provider>
-  , document.getElementById('app'));
+  const store = createStore(reducers, initialState, enhancer);
 
+  ReactDOM.render(
+    <Provider store={ store  }>
+      <ListManager />
+    </Provider>
+    , document.getElementById('app'));
+
+});
