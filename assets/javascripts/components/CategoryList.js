@@ -4,12 +4,11 @@ import { connect } from 'react-redux';
 import { category_list_actions } from '../redux/category_list/category_list'
 
 export class CategoryList extends Component {
-   render() {
-     this.props.addTask('','');
-    const categoryItems = this.props.categories.map(function(category){
-      var categoryName = Object.keys(category)[0];
+  render() {
+    this.props.addTask('','');
+    const categoryItems = Object.keys(this.props.categories).map(function(categoryName){
       var tasks = category[categoryName];
-  
+
       return (
         <CategoryListItem 
           key={`${categoryName}${Date.now()}`} 

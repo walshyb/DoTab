@@ -88,8 +88,9 @@ export default ( old_state = initial_state, action ) => {
       var categoryName = action.payload;
 
       // return new state with new category appended on end of categories object
+      // TODO: if user inputs an existing categoryName, prompt to overwrite
       return {
-        categories: Object.assign(old_state.categories, { [categoryName]: {} });
+        categories: Object.assign(old_state.categories, { [categoryName]: {} })
       };
     default:
       return old_state;

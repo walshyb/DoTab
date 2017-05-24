@@ -25,28 +25,15 @@ export class AddTaskBar extends Component {
     event.preventDefault();
     var categories = this.props.categories;
 
-    categories.map((category) => {
+    Object.keys(categories).map((category) => {
       var name = Object.keys(category)[0];
-      if (name === old_state.currentCategory) {
-
-        var tasks = category[name];
-        var task = {
-          id: Date.now(),
-          text: this.state.taskText,
-          status: 'active',
-        };
-        tasks.push(task);
-        props.updateCategory(name, tasks);
-
-        this.setState({ taskText: '' });
-      } 
+       
     });
   };
 
   renderCategoryOptions = () => {
-    const categoryNames = this.props.categories.map((category) => {
-      var name = Object.keys(category)[0];
-      return <option value={name} key={name}> {name} </option>;
+    const categoryNames = Object.keys(this.props.categories).map(function(key) {
+      return <option value={key} key={DateTime.now()}> {key} </option>;
     });
 
     return categoryNames;
@@ -70,8 +57,7 @@ export class AddTaskBar extends Component {
 
           { this.props.displayAddCategoryField ? 
               <AddCategory 
-                updateCategory={this.props.updateCategory} 
-                updateCategoryOption={this.props.updateCategoryOption}
+                addCategory={this.props.addCategory}
               /> 
               : null 
           }
@@ -84,8 +70,8 @@ export class AddTaskBar extends Component {
 }
 
 AddTaskBar.propTypes = {
-  updateCategory: React.PropTypes.func.isRequired,
-  categories: React.PropTypes.array.isRequired
+  addCategory: React.PropTypes.func.isRequired,
+  categories: React.PropTypes.object.isRequired
 };
 
 export default connect(

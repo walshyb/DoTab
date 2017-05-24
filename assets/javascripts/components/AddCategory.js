@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { add_category_actions } from '../redux/add_category/add_category';
 
-export class AddCategory extends Component {
+export default class AddCategory extends Component {
 
   constructor(props) {
     super(props);
@@ -38,12 +36,3 @@ export class AddCategory extends Component {
     ); 
   };
 }
-
-export default connect(
-  function( state ) {
-    return {
-      categoryName: state.add_category.categoryName
-    };
-  },
-  add_category_actions
-)( AddCategory );
