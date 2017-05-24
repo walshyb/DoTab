@@ -18,7 +18,7 @@ export default class CategoryListItem extends Component {
   };
 
   render() {
-    const tasks = this.props.tasks.map(function(task, i) {
+    const tasks = Object.keys(this.props.tasks).map(function(task, i) {
       return <Task key={task.id} text={task.text} taskId={task.id} removeTask={this.removeTask}/>;
     }.bind(this));
     return (

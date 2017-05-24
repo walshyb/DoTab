@@ -33,7 +33,7 @@ export class AddTaskBar extends Component {
 
   renderCategoryOptions = () => {
     const categoryNames = Object.keys(this.props.categories).map(function(key) {
-      return <option value={key} key={DateTime.now()}> {key} </option>;
+      return <option value={key} key={Date.now()}> {key} </option>;
     });
 
     return categoryNames;

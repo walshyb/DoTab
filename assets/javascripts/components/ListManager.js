@@ -12,7 +12,6 @@ export class ListManager extends Component {
       <div>
         <h1> { util.getCurrentDate() } </h1>
         <CategoryList 
-          updateCategory={this.props.updateCategory}
           categories={this.props.categories} 
         />
         <AddTaskBar 
