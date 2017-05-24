@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { add_category_actions } from '../redux/add_category/add_category';
 
-export default class AddCategory extends Component {
+export class AddCategory extends Component {
 
   constructor(props) {
     super(props);
@@ -20,12 +21,8 @@ export default class AddCategory extends Component {
 
   handleClick(event) {
     var key = this.state.categoryName;
-    var data = { [key] : [] };
-
-    this.props.updateCategory(key, []);
-    this.props.updateCategoryOption(key);
-
-    this.setState( { categoryName: '' });
+    this.props.addCategory(key);
+    
   };
 
   render() {
@@ -41,3 +38,12 @@ export default class AddCategory extends Component {
     ); 
   };
 }
+
+export default connect(
+  function( state ) {
+    return {
+      categoryName: state.add_category.categoryName
+    };
+  },
+  add_category_actions
+)( AddCategory );
