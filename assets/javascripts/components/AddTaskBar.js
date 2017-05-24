@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import AddCategory from './AddCategory';
 import { connect } from 'react-redux';
-import { add_task_bar_actions } from '../redux/actions/add_task_bar';
+import { add_task_bar_actions } from '../redux/add_task_bar/add_task_bar';
 
 export class AddTaskBar extends Component {
   constructor(props) {
@@ -15,12 +15,12 @@ export class AddTaskBar extends Component {
     };
   };
 
-  handleChange(event) {
+  handleChange = (event) => {
     this.setState({ taskText: event.target.value });
   };
 
   // add task
-  handleSubmit(event) {
+  handleSubmit = (event) => {
     event.preventDefault();
     var categories = this.props.categories;
 
@@ -42,7 +42,7 @@ export class AddTaskBar extends Component {
     });
   };
 
-  renderCategoryOptions() {
+  renderCategoryOptions = () => {
     const categoryNames = this.props.categories.map((category) => {
       var name = Object.keys(category)[0];
       return <option value={name} key={name}> {name} </option>;

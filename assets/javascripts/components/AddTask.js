@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { add_task_actions } from '../redux/actions/add_task';
+import { add_task_actions } from '../redux/add_task/add_task';
 
 export class AddTask extends Component {
   state = { taskText: '' };
@@ -53,7 +53,6 @@ export default connect(
   // map state to props
   function( state ) {
     return {
-      arch: state.add_task.arch,
     };
   },
   // map dispatch actions to props

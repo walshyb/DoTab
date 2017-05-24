@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import CategoryListItem from './CategoryListItem';
 import { connect } from 'react-redux';
-import { category_list_actions } from '../redux/actions/category_list'
+import { category_list_actions } from '../redux/category_list/category_list'
 
 export class CategoryList extends Component {
    render() {
