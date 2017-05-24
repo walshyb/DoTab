@@ -13,6 +13,10 @@ const getCurrentDate = () => {
   return `${dayOfWeek}, ${month} ${day}, ${year}`;
 };
 
+export const saveState = (state) => {
+  chrome.storage.sync.set({state});
+};
+
 export const util = {
-  getCurrentDate
+  getCurrentDate, saveState 
 };

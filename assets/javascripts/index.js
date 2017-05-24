@@ -6,6 +6,7 @@ import thunk from 'redux-thunk';
 
 import ListManager from './components/ListManager';
 import reducers from './redux/rootReducer';
+import { util } from './utils/';
 
 //const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
 //const store = createStore(reducers, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
@@ -26,6 +27,9 @@ chrome.storage.sync.get('state', function(s) {
   );
 
   const store = createStore(reducers, initialState, enhancer);
+  store.subscribe(() => { 
+    util.saveState(store.getState()) 
+  });
 
   ReactDOM.render(
     <Provider store={ store  }>
