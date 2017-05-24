@@ -11,7 +11,8 @@ export class AddTaskBar extends Component {
     this.handleChange = this.handleChange.bind(this);
 
     this.state = {
-      taskText: ''
+      taskText: '',
+      currentCategory: ''
     };
   };
 

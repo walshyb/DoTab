@@ -6,6 +6,7 @@ const chromep = new ChromePromise();
 
 const UPDATE_CATEGORIES = 'UPDATE_CATEGORIES';
 const UPDATE_CATEGORY = 'UPDATE_CATEGORY';
+const ADD_CATEGORY = 'ADD_CATEGORY';
 
 /* Util Functions */
 
@@ -58,14 +59,18 @@ const updateCategory = ( categoryName, tasks) => {
   }
 };
 
+const addCategory = ( categoryName ) => {
+  return { type: ADD_CATEGORY, payload: categoryName};
+};
+
 export const list_manager_actions = {
-  updateCategories, updateCategory
+  updateCategories, updateCategory, addCategory
 };
 
 /* List Manager Reducer */
 
 const initial_state = {
-  categories: []
+  categories: {}
 };
 
 /* Not much logic here because UPDATE_CATEGORIES and UPDATE_CATEGORY action creators are asynchronous, so the logic is there and a promise with the result gets sent here */
@@ -78,6 +83,13 @@ export default ( old_state = initial_state, action ) => {
     case UPDATE_CATEGORY:
       return {
         categories: action.payload.categories
+      };
+    case ADD_CATEGORY: 
+      var categoryName = action.payload;
+
+      // return new state with new category appended on end of categories object
+      return {
+        categories: Object.assign(old_state.categories, { [categoryName]: {} });
       };
     default:
       return old_state;
