@@ -7,10 +7,6 @@ import { util } from '../utils';
 
 export class ListManager extends Component {
 
-  componentWillMount () {
-    this.props.updateCategories();
-  };
-
   render() {
     return (
       <div>
