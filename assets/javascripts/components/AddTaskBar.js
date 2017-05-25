@@ -7,12 +7,10 @@ export class AddTaskBar extends Component {
   constructor(props) {
     super(props);
 
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-
     this.state = {
       taskText: '',
-      currentCategory: ''
+      currentCategory: '',
+      displayAddCategoryField: false
     };
   };
 
@@ -27,16 +25,26 @@ export class AddTaskBar extends Component {
 
     Object.keys(categories).map((category) => {
       var name = Object.keys(category)[0];
-       
+
     });
   };
 
   renderCategoryOptions = () => {
     const categoryNames = Object.keys(this.props.categories).map(function(key) {
-      return <option value={key} key={Date.now()}> {key} </option>;
+      return <option value={key} key={`${key}${Date.now()}`}> {key} </option>;
     });
 
     return categoryNames;
+  };
+
+  handleSelectChange = (event) => {
+    var categoryName = event.target.value;
+
+    if(categoryName === 'add-category') {
+      this.setState({ currentCategory: categoryName, displayAddCategoryField: true});
+    } else {
+      this.setState({ currentCategory: categoryName, displayAddCategoryField: false });
+    }
   };
 
   render() {
@@ -49,13 +57,13 @@ export class AddTaskBar extends Component {
             onChange={this.handleChange}
             placeholder='What do you need to get done?' 
           />
-          <select id='select-category' value={this.props.currentCategory} onChange={this.props.handleSelectChange}>
+          <select id='select-category' value={this.state.currentCategory} onChange={this.handleSelectChange}>
             <option value=''>Category</option>
             { this.renderCategoryOptions() }
             <option value='add-category'>Add Category</option>
           </select>
 
-          { this.props.displayAddCategoryField ? 
+          { this.state.displayAddCategoryField ? 
               <AddCategory 
                 addCategory={this.props.addCategory}
               /> 
@@ -78,9 +86,6 @@ export default connect(
   // map state to props
   function( state ) {
     return {
-      categoryFieldValue: state.add_task_bar.categoryFieldValue,
-      currentCategory: state.add_task_bar.currentCategory,
-      displayAddCategoryField: state.add_task_bar.displayAddCategoryField,
     };
   },
   // map dispatch actions to props
