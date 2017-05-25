@@ -12,6 +12,14 @@ export default class AddTaskBar extends Component {
     };
   };
 
+  setCurrentCategory = (currentCategory) => {
+    this.setState({ currentCategory });
+  };
+
+  setDisplayAddCategoryField = (displayAddCategoryField) => {
+    this.setState({ displayAddCategoryField });
+  };
+
   handleChange = (event) => {
     this.setState({ taskText: event.target.value });
   };
@@ -59,6 +67,8 @@ export default class AddTaskBar extends Component {
           { this.state.displayAddCategoryField ? 
               <AddCategory 
                 addCategory={this.props.addCategory}
+                setCurrentCategory={this.setCurrentCategory}
+                setDisplayAddCategoryField={this.setDisplayAddCategoryField}
               /> 
               : null 
           }
