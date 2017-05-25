@@ -30,9 +30,14 @@ export default class AddTaskBar extends Component {
   // on submit, add task and reset input field text
   handleSubmit = (event) => {
     event.preventDefault();
-    this.props.addTask(this.state.currentCategory, this.state.taskText);
 
-    this.setState({ taskText: '' });
+    // if currentCategory is not empty and is not add-category
+    if(this.state.currentCategory !== '' && this.state.currentCategory !== 'add-category') {
+
+      this.props.addTask(this.state.currentCategory, this.state.taskText);
+      this.setState({ taskText: '' });
+
+    }
   };
 
   // populate Select element with options whose values are category names
@@ -69,24 +74,24 @@ export default class AddTaskBar extends Component {
             placeholder='What do you need to get done?' 
           />
 
-          <select id='select-category' value={this.state.currentCategory} onChange={this.handleSelectChange}>
-            <option value=''>Category</option>
-            { this.renderCategoryOptions() }
-            <option value='add-category'>Add Category</option>
-          </select>
+        <select id='select-category' value={this.state.currentCategory} onChange={this.handleSelectChange}>
+          <option value=''>Category</option>
+          { this.renderCategoryOptions() }
+          <option value='add-category'>Add Category</option>
+        </select>
 
-          { this.state.displayAddCategoryField ? 
-              <AddCategory 
-                addCategory={this.props.addCategory}
-                setCurrentCategory={this.setCurrentCategory}
-                setDisplayAddCategoryField={this.setDisplayAddCategoryField}
-              /> 
-              : null 
-          }
+        { this.state.displayAddCategoryField ? 
+            <AddCategory 
+              addCategory={this.props.addCategory}
+              setCurrentCategory={this.setCurrentCategory}
+              setDisplayAddCategoryField={this.setDisplayAddCategoryField}
+            /> 
+            : null 
+        }
 
-          <button type='submit' className='add-task-bar-btn' > + </button>
-        </form>
-      </div>
+        <button type='submit' className='add-task-bar-btn' > + </button>
+      </form>
+    </div>
     );
   };
 }

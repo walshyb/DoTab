@@ -17,11 +17,14 @@ export default class AddCategory extends Component {
   handleClick = (event) => {
     event.preventDefault();
     var key = this.state.categoryName;
-    this.props.addCategory(key);
 
-    this.setState({ categoryName: ''});             // reset categoryName
-    this.props.setCurrentCategory(key);             // select newly created option
-    this.props.setDisplayAddCategoryField(false);   // hide AddCategory component
+    if (key !== '') {
+      this.props.addCategory(key);
+
+      this.setState({ categoryName: ''});             // reset categoryName
+      this.props.setCurrentCategory(key);             // select newly created option
+      this.props.setDisplayAddCategoryField(false);   // hide AddCategory component
+    }
   };
 
   render() {
