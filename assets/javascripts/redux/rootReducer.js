@@ -1,10 +1,9 @@
 import { combineReducers } from 'redux';
 import list_manager from './list_manager/list_manager';
-import add_task_bar from './add_task_bar/add_task_bar';
 import category_list from './category_list/category_list';
 
 const rootReducer = combineReducers({
-  list_manager, add_task_bar, category_list 
+  list_manager, category_list 
 });
 
 export default rootReducer;

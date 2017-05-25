@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import CategoryListItem from './CategoryListItem';
+import { util } from '../../utils';
 
 export default class CategoryList extends Component {
   render() {
@@ -8,7 +9,7 @@ export default class CategoryList extends Component {
 
       return (
         <CategoryListItem 
-          key={`${categoryName}${Date.now()}`} 
+          key={util.generateId()} 
           tasks={tasks}  
           categoryName={categoryName} 
         />

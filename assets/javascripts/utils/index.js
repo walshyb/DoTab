@@ -13,10 +13,14 @@ const getCurrentDate = () => {
   return `${dayOfWeek}, ${month} ${day}, ${year}`;
 };
 
-export const saveState = (state) => {
+const saveState = (state) => {
   chrome.storage.sync.set({state});
 };
 
+const generateId = () => {
+  return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
+};
+
 export const util = {
-  getCurrentDate, saveState 
+  getCurrentDate, saveState, generateId
 };
