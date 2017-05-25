@@ -6,11 +6,12 @@ export default class CategoryList extends Component {
   render() {
     const categoryItems = Object.keys(this.props.categories).map(function(categoryName){
       var tasks = this.props.categories[categoryName];
-
+      var id = util.generateId();
       return (
         <CategoryListItem 
-          key={util.generateId()} 
-          tasks={tasks}  
+          key={id}
+          id={id}
+          tasks={tasks}
           categoryName={categoryName} 
         />
       );
