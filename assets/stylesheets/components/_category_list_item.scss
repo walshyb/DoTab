@@ -11,12 +11,20 @@
     min-width: 300px;
   }
 
-  h2 {
-    font-size: 1.6rem;
-    margin-top: 0px;
-    color: $dark-teal;
+  .view-mode {
+    h2 {
+      font-size: 1.6rem;
+      margin-top: 0px;
+      color: $dark-teal;
 
-    .edit-category {
+      .edit-category {
+        float: right;
+      }
+    }
+  }
+
+  .edit-mode {
+    .remove-category {
       float: right;
     }
   }
