@@ -5,13 +5,34 @@
   min-height: 100px;
   padding: 20px;
   margin: 10px 10px 10px 0px;
+
   @media (min-width: 900px) {
     width: 42%;
     min-width: 300px;
   }
+
   h2 {
     font-size: 1.6rem;
     margin-top: 0px;
     color: $dark-teal;
+  }
+
+  .tasks {
+    list-style: none;
+    padding-left: 10px;
+
+    .task {
+
+      label {
+        input {
+          margin-right: 10px;
+          padding: 20px;
+        }
+      }
+
+      .task-text {
+        font-size: 12pt;
+      }
+    }
   }
 }
