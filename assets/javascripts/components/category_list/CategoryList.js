@@ -19,7 +19,7 @@ export default class CategoryList extends Component {
     }.bind(this));
 
     return (
-      <div id='category-list'> 
+      <div className='category-list'> 
         {categoryItems}
       </div>
     );

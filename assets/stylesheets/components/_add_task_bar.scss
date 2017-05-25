@@ -1,0 +1,28 @@
+/* adding tasks and categories */
+
+.add-task-bar { /* puts form at bottom of page*/
+  position: fixed;
+  bottom: 60px;
+  display:flex;
+}
+
+
+/*remove default select styling */
+
+.add-task-bar-field, #select-category {
+  -webkit-appearance: none;
+  border: 2px solid #aed2dd;
+  background: #e6f7fb;
+  color: $dark-teal;
+  width: 159px;
+  border-radius: 3px;
+  padding: 11px 14px 11px 14px;
+  font-size: 20px;
+  font-family: $font-stack;
+  &[type="text"]{
+    background: #f6fdff;
+  }
+  &:focus {
+    outline: none;
+  }
+}

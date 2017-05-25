@@ -1,0 +1,13 @@
+body {
+  background-color: whitesmoke;
+  background: url('../images/bg.jpg');
+  font-family: $font-stack;
+  width: 90%;
+  margin: 0 auto;
+}
+
+h1 {
+  color: $dark-teal;
+  font-size: 2.5rem;
+  width: 100%;
+}

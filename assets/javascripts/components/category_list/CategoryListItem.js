@@ -18,7 +18,7 @@ export default class CategoryListItem extends Component {
     return (
       <article className='category' id={this.props.id}>
         <h2> {this.props.categoryName} </h2>
-        <ul> { tasks } </ul>
+        <ul className='tasks'> { tasks } </ul>
       </article>
     );
   };  
