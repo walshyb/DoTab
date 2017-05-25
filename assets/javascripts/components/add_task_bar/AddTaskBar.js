@@ -12,19 +12,22 @@ export default class AddTaskBar extends Component {
     };
   };
 
+  // setter for currentCategory
   setCurrentCategory = (currentCategory) => {
     this.setState({ currentCategory });
   };
 
+  // setter for displayAddCategoryField
   setDisplayAddCategoryField = (displayAddCategoryField) => {
     this.setState({ displayAddCategoryField });
   };
 
+  // update input field text on change
   handleChange = (event) => {
     this.setState({ taskText: event.target.value });
   };
 
-  // add task
+  // on submit, add task and reset input field text
   handleSubmit = (event) => {
     event.preventDefault();
     this.props.addTask(this.state.currentCategory, this.state.taskText);
@@ -32,6 +35,7 @@ export default class AddTaskBar extends Component {
     this.setState({ taskText: '' });
   };
 
+  // populate Select element with options whose values are category names
   renderCategoryOptions = () => {
     const categoryNames = Object.keys(this.props.categories).map(function(key) {
       return <option value={key} key={`${key}${Date.now()}`}> {key} </option>;
@@ -40,6 +44,8 @@ export default class AddTaskBar extends Component {
     return categoryNames;
   };
 
+  // update Select element's value on change
+  // detect whether to display AddCategory component or not
   handleSelectChange = (event) => {
     var categoryName = event.target.value;
 
@@ -54,12 +60,14 @@ export default class AddTaskBar extends Component {
     return (
       <div id='add-task-bar'>
         <form onSubmit={this.handleSubmit}>
+
           <input 
             type='text' 
             value={this.state.taskText}
             onChange={this.handleChange}
             placeholder='What do you need to get done?' 
           />
+
           <select id='select-category' value={this.state.currentCategory} onChange={this.handleSelectChange}>
             <option value=''>Category</option>
             { this.renderCategoryOptions() }
