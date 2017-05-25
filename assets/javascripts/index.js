@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { compose, createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 
-import ListManager from './components/ListManager';
+import ListManager from './components/list_manager/ListManager';
 import reducers from './redux/rootReducer';
 import { util } from './utils/';
 

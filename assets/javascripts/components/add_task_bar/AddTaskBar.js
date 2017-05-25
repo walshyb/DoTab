@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import AddCategory from './AddCategory';
 import { connect } from 'react-redux';
-import { add_task_bar_actions } from '../redux/add_task_bar/add_task_bar';
+import { add_task_bar_actions } from '../../redux/add_task_bar/add_task_bar';
 
 export class AddTaskBar extends Component {
   constructor(props) {

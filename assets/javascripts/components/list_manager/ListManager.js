@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import CategoryList from './CategoryList';
-import AddTaskBar from './AddTaskBar';
+import CategoryList from '../category_list/CategoryList';
+import AddTaskBar from '../add_task_bar/AddTaskBar';
 import { connect } from 'react-redux';
-import { list_manager_actions } from '../redux/list_manager/list_manager'
-import { util } from '../utils';
+import { list_manager_actions } from '../../redux/list_manager/list_manager'
+import { util } from '../../utils';
 
 export class ListManager extends Component {
 
