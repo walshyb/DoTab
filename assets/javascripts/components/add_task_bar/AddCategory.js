@@ -8,16 +8,13 @@ export default class AddCategory extends Component {
     this.state = {
       categoryName: ''
     };
-
-    this.handleChange = this.handleChange.bind(this);
-    this.handleClick = this.handleClick.bind(this);
   };
 
-  handleChange(event) {
+  handleChange = (event) => {
     this.setState({ categoryName: event.target.value });
   };
 
-  handleClick(event) {
+  handleClick = (event) => {
     event.preventDefault();
     var key = this.state.categoryName;
     this.props.addCategory(key);
