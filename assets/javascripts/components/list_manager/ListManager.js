@@ -13,6 +13,7 @@ export class ListManager extends Component {
         <h1> { util.getCurrentDate() } </h1>
         <CategoryList 
           categories={this.props.categories} 
+          removeTask={this.props.removeTask}
         />
         <AddTaskBar 
           addCategory={this.props.addCategory}

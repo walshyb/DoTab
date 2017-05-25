@@ -3,11 +3,10 @@ import React, { Component } from 'react';
 export default class Task extends Component {
   constructor(props){
     super(props);
-    this.handleChange = this.handleChange.bind(this);
   };
 
-  handleChange() {
-    this.props.removeTask(this.props.text);
+  handleChange = () => {
+    this.props.removeTask(this.props.categoryName, this.props.taskId);
   };
 
   render() {

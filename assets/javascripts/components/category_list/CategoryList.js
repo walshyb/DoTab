@@ -13,6 +13,7 @@ export default class CategoryList extends Component {
           id={id}
           tasks={tasks}
           categoryName={categoryName} 
+          removeTask={this.props.removeTask}
         />
       );
     }.bind(this));

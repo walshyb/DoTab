@@ -1,8 +1,10 @@
+import omit from 'lodash.omit';
 import { util } from '../../utils';
 /* Action Type Constants: */
 
 const ADD_CATEGORY = 'ADD_CATEGORY';
 const ADD_TASK = 'ADD_TASK';
+const REMOVE_TASK = 'REMOVE_TASK';
 
 /* Action Creators: */
 
@@ -14,8 +16,12 @@ const addTask = ( categoryName, taskText ) => {
   return { type: ADD_TASK, payload: { categoryName, taskText } };
 };
 
+const removeTask = ( categoryName, taskId ) => {
+  return { type: REMOVE_TASK, payload: { categoryName, taskId }};
+};
+
 export const list_manager_actions = {
-  addCategory, addTask
+  addCategory, addTask, removeTask
 };
 
 /* List Manager Reducer */
@@ -51,6 +57,15 @@ export default ( old_state = initial_state, action ) => {
           }
         }
       };
+    case REMOVE_TASK: 
+      var categoryName = action.payload.categoryName;
+      var taskId = action.payload.taskId;
+      return {
+        categories: {
+          ...old_state.categories,
+          [categoryName]: omit(old_state.categories[categoryName], taskId)
+        }
+      }
     default:
       return old_state;
   };
