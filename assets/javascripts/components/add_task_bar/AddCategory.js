@@ -26,13 +26,14 @@ export default class AddCategory extends Component {
 
   render() {
     return (
-      <div id='add-category'>
-        <input type='text' 
+      <div className='add-category'>
+        <input type='text'
+          className='add-category-field'
           value={this.state.categoryName} 
           onChange={this.handleChange} 
           placeholder='Category'
         />
-        <button onClick={this.handleClick}> Add Category </button>
+        <button className='add-category-btn' onClick={this.handleClick}> Add Category </button>
       </div>
     ); 
   };

@@ -58,11 +58,12 @@ export default class AddTaskBar extends Component {
 
   render() {
     return (
-      <div id='add-task-bar'>
+      <div className='add-task-bar'>
         <form onSubmit={this.handleSubmit}>
 
           <input 
             type='text' 
+            className='add-task-bar-field'
             value={this.state.taskText}
             onChange={this.handleChange}
             placeholder='What do you need to get done?' 
@@ -83,7 +84,7 @@ export default class AddTaskBar extends Component {
               : null 
           }
 
-          <button type='submit' id='add-task' > + </button>
+          <button type='submit' className='add-task-bar-btn' > + </button>
         </form>
       </div>
     );
