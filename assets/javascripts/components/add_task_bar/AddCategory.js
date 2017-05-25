@@ -18,6 +18,7 @@ export default class AddCategory extends Component {
   };
 
   handleClick(event) {
+    event.preventDefault();
     var key = this.state.categoryName;
     this.props.addCategory(key);
     

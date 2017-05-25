@@ -25,7 +25,6 @@ export default class CategoryListItem extends Component {
       <article className='category' id={this.props.categoryName}>
         <h2> {this.props.categoryName} </h2>
         <ul> { tasks } </ul>
-
      </article>
     );
   };  
