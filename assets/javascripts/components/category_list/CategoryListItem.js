@@ -15,9 +15,13 @@ export default class CategoryListItem extends Component {
         categoryName={this.props.categoryName}
         removeTask={this.props.removeTask}/>;
     }.bind(this));
+
     return (
       <article className='category' id={this.props.id}>
-        <h2> {this.props.categoryName} </h2>
+        <h2> 
+          {this.props.categoryName} 
+          <button className='edit-category'>✏️  </button>
+        </h2>
         <ul className='tasks'> { tasks } </ul>
       </article>
     );
