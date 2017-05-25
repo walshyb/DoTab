@@ -28,6 +28,8 @@ export default class AddTaskBar extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
     this.props.addTask(this.state.currentCategory, this.state.taskText);
+
+    this.setState({ taskText: '' });
   };
 
   renderCategoryOptions = () => {
