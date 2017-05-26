@@ -27,9 +27,9 @@ export default class CategoryListItem extends Component {
     this.setState({ categoryName: event.target.value });
   };
 
-  updateCategoryName = (event) => {
+  renameCategory = (event) => {
     if(event.keyCode == 13) {
-      this.props.updateCategoryName(this.props.categoryName, this.state.categoryName); 
+      this.props.renameCategory(this.props.categoryName, this.state.categoryName); 
     }
   };
 
@@ -56,7 +56,7 @@ export default class CategoryListItem extends Component {
         ) : (
           <div className='edit-mode'>
             <input 
-              onKeyDown={this.updateCategoryName}
+              onKeyDown={this.renameCategory}
               onChange={this.updateCategoryNameText}
               className='edit-category-name' 
               value={this.state.categoryName}

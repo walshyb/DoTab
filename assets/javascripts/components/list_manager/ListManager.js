@@ -15,7 +15,7 @@ export class ListManager extends Component {
           categories={this.props.categories} 
           removeTask={this.props.removeTask}
           removeCategory={this.props.removeCategory}
-          updateCategoryName={this.props.updateCategoryName}
+          renameCategory={this.props.renameCategory}
         />
         <AddTaskBar 
           addCategory={this.props.addCategory}

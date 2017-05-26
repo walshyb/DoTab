@@ -6,7 +6,7 @@ const ADD_CATEGORY = 'ADD_CATEGORY';
 const ADD_TASK = 'ADD_TASK';
 const REMOVE_TASK = 'REMOVE_TASK';
 const REMOVE_CATEGORY = 'REMOVE_CATEGORY';
-const UPDATE_CATEGORY_NAME = 'UPDATE_CATEGORY_NAME';
+const RENAME_CATEGORY = 'RENAME_CATEGORY';
 
 /* Action Creators: */
 
@@ -26,12 +26,12 @@ const removeCategory = ( categoryName ) => {
   return { type: REMOVE_CATEGORY, payload: { categoryName }};
 };
 
-const updateCategoryName = ( oldCategoryName, newCategoryName ) => {
-  return { type: UPDATE_CATEGORY_NAME, payload: { oldCategoryName, newCategoryName }};
+const renameCategory = ( oldCategoryName, newCategoryName ) => {
+  return { type: RENAME_CATEGORY, payload: { oldCategoryName, newCategoryName }};
 };
 
 export const list_manager_actions = {
-  addCategory, addTask, removeTask, removeCategory, updateCategoryName
+  addCategory, addTask, removeTask, removeCategory, renameCategory 
 };
 
 /* List Manager Reducer */
@@ -80,7 +80,7 @@ export default ( old_state = initial_state, action ) => {
       return {
         categories: omit(old_state.categories, action.payload.categoryName)
       };
-    case UPDATE_CATEGORY_NAME:
+    case RENAME_CATEGORY:
       var oldCategoryName = action.payload.oldCategoryName;
       var newCategoryName = action.payload.newCategoryName;
       var categoryTasks = old_state.categories[oldCategoryName];
