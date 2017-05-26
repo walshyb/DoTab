@@ -5,6 +5,7 @@ import { util } from '../../utils';
 const ADD_CATEGORY = 'ADD_CATEGORY';
 const ADD_TASK = 'ADD_TASK';
 const REMOVE_TASK = 'REMOVE_TASK';
+const REMOVE_CATEGORY = 'REMOVE_CATEGORY';
 
 /* Action Creators: */
 
@@ -20,8 +21,12 @@ const removeTask = ( categoryName, taskId ) => {
   return { type: REMOVE_TASK, payload: { categoryName, taskId }};
 };
 
+const removeCategory = ( categoryName ) => {
+  return { type: REMOVE_CATEGORY, payload: { categoryName }};
+};
+
 export const list_manager_actions = {
-  addCategory, addTask, removeTask
+  addCategory, addTask, removeTask, removeCategory
 };
 
 /* List Manager Reducer */
@@ -66,6 +71,10 @@ export default ( old_state = initial_state, action ) => {
           [categoryName]: omit(old_state.categories[categoryName], taskId)
         }
       }
+    case REMOVE_CATEGORY:
+      return {
+        categories: omit(old_state.categories, action.payload.categoryName)
+      };
     default:
       return old_state;
   };

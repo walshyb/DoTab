@@ -10,12 +10,16 @@ export default class CategoryListItem extends Component {
     };
   };
 
-  handleClick = (event) => {
+  setEditMode = (event) => {
     if(this.state.editMode) {
       this.setState({editMode: false});
     } else {
       this.setState({editMode: true});
     }
+  };
+
+  removeCategory = (event) => {
+    this.props.removeCategory(this.props.categoryName);
   };
 
   render() {
@@ -35,13 +39,13 @@ export default class CategoryListItem extends Component {
             <h2> 
               {this.props.categoryName} 
               {/*TODO: make edit-category button be an svg of a pencil and not an emoji*/}
-              <button onClick={this.handleClick} className='edit-category'>✏️  </button>
+              <button onClick={this.setEditMode} className='edit-category'>✏️  </button>
             </h2>
           </div>
         ) : (
           <div className='edit-mode'>
             <input className='edit-category-name' value={this.props.categoryName}/>
-            <button className='remove-category'>X</button> 
+            <button onClick={this.removeCategory} className='remove-category'>X</button> 
           </div>
         )}
         <ul className='tasks'> { tasks } </ul>
