@@ -61,6 +61,7 @@ export default class CategoryListItem extends Component {
               className='edit-category-name' 
               value={this.state.categoryName}
             />
+            {/*TODO: add alert that confirms user wants to delete category*/}
             <button onClick={this.removeCategory} className='remove-category'>X</button> 
           </div>
         )}
