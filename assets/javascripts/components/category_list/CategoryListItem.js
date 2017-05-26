@@ -6,7 +6,8 @@ export default class CategoryListItem extends Component {
     super(props);
 
     this.state = {
-      editMode: false
+      editMode: false,
+      categoryName: this.props.categoryName
     };
   };
 
@@ -20,6 +21,16 @@ export default class CategoryListItem extends Component {
 
   removeCategory = (event) => {
     this.props.removeCategory(this.props.categoryName);
+  };
+
+  updateCategoryNameText = (event) => {
+    this.setState({ categoryName: event.target.value });
+  };
+
+  updateCategoryName = (event) => {
+    if(event.keyCode == 13) {
+      this.props.updateCategoryName(this.props.categoryName, this.state.categoryName); 
+    }
   };
 
   render() {
@@ -44,7 +55,12 @@ export default class CategoryListItem extends Component {
           </div>
         ) : (
           <div className='edit-mode'>
-            <input className='edit-category-name' value={this.props.categoryName}/>
+            <input 
+              onKeyDown={this.updateCategoryName}
+              onChange={this.updateCategoryNameText}
+              className='edit-category-name' 
+              value={this.state.categoryName}
+            />
             <button onClick={this.removeCategory} className='remove-category'>X</button> 
           </div>
         )}

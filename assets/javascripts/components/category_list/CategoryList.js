@@ -15,6 +15,7 @@ export default class CategoryList extends Component {
           categoryName={categoryName} 
           removeTask={this.props.removeTask}
           removeCategory={this.props.removeCategory}
+          updateCategoryName={this.props.updateCategoryName}
         />
       );
     }.bind(this));
