@@ -24,7 +24,7 @@ export default class CategoryListItem extends Component {
   };
 
   finishEditing = (event) => {
-    this.setState({editMode: true});
+    this.setState({editMode: false});
   };
 
   updateCategoryNameText = (event) => {
