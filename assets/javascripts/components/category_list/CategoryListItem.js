@@ -23,6 +23,10 @@ export default class CategoryListItem extends Component {
     this.props.removeCategory(this.props.categoryName);
   };
 
+  finishEditing = (event) => {
+    this.setState({editMode: true});
+  };
+
   updateCategoryNameText = (event) => {
     this.setState({ categoryName: event.target.value });
   };
@@ -63,6 +67,7 @@ export default class CategoryListItem extends Component {
             />
             {/*TODO: add alert that confirms user wants to delete category*/}
             <button onClick={this.removeCategory} className='remove-category'>X</button> 
+            <button onClick={this.finishEditing} className='finish-editing'>✓</button>
           </div>
         )}
         <ul className='tasks'> { tasks } </ul>
