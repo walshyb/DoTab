@@ -6,7 +6,7 @@ export default class Task extends Component {
   };
 
   handleChange = () => {
-    this.props.removeTask(this.props.categoryName, this.props.taskId);
+    this.props.archiveTask(this.props.categoryName, this.props.taskId);
   };
 
   render() {

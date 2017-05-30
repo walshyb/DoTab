@@ -4,7 +4,7 @@ import { util } from '../../utils';
 
 const ADD_CATEGORY = 'ADD_CATEGORY';
 const ADD_TASK = 'ADD_TASK';
-const REMOVE_TASK = 'REMOVE_TASK';
+const ARCHIVE_TASK= 'ARCHIVE_TASK';
 const REMOVE_CATEGORY = 'REMOVE_CATEGORY';
 const RENAME_CATEGORY = 'RENAME_CATEGORY';
 
@@ -18,8 +18,8 @@ const addTask = ( categoryName, taskText ) => {
   return { type: ADD_TASK, payload: { categoryName, taskText }};
 };
 
-const removeTask = ( categoryName, taskId ) => {
-  return { type: REMOVE_TASK, payload: { categoryName, taskId }};
+const archiveTask = ( categoryName, taskId ) => {
+  return { type: ARCHIVE_TASK, payload: { categoryName, taskId }};
 };
 
 const removeCategory = ( categoryName ) => {
@@ -31,7 +31,7 @@ const renameCategory = ( oldCategoryName, newCategoryName ) => {
 };
 
 export const list_manager_actions = {
-  addCategory, addTask, removeTask, removeCategory, renameCategory 
+  addCategory, addTask, archiveTask, removeCategory, renameCategory 
 };
 
 /* List Manager Reducer */
@@ -55,7 +55,6 @@ export default ( old_state = initial_state, action ) => {
             completed: {}
           }
         }
-
       };
     case ADD_TASK: 
       var taskId = util.generateId();
@@ -75,7 +74,7 @@ export default ( old_state = initial_state, action ) => {
           }
         }
       };
-    case REMOVE_TASK: 
+    case ARCHIVE_TASK: 
       var categoryName = action.payload.categoryName;
       var taskId = action.payload.taskId;
       var taskText = old_state.categories[categoryName].active[taskId];
@@ -90,7 +89,7 @@ export default ( old_state = initial_state, action ) => {
             }
           }
         }
-      }
+      };
     case REMOVE_CATEGORY:
       return {
         categories: omit(old_state.categories, action.payload.categoryName)

@@ -44,7 +44,7 @@ export default class CategoryListItem extends Component {
         text={this.props.tasks[task]} 
         taskId={task} 
         categoryName={this.props.categoryName}
-        removeTask={this.props.removeTask}/>;
+        archiveTask={this.props.archiveTask}/>;
     }.bind(this));
 
     return (

@@ -13,7 +13,7 @@ export default class CategoryList extends Component {
           id={id}
           tasks={tasks}
           categoryName={categoryName} 
-          removeTask={this.props.removeTask}
+          archiveTask={this.props.archiveTask}
           removeCategory={this.props.removeCategory}
           renameCategory={this.props.renameCategory}
         />
