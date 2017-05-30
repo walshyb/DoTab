@@ -5,7 +5,7 @@ import { util } from '../../utils';
 export default class CategoryList extends Component {
   render() {
     const categoryItems = Object.keys(this.props.categories).map(function(categoryName){
-      var tasks = this.props.categories[categoryName];
+      var tasks = this.props.categories[categoryName].active;
       var id = util.generateId();
       return (
         <CategoryListItem 

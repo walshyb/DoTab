@@ -50,7 +50,10 @@ export default ( old_state = initial_state, action ) => {
       return {
         categories: {
           ...old_state.categories,
-          [categoryName]: {}
+          [categoryName]: {
+            active: {},
+            completed: {}
+          }
         }
 
       };
@@ -62,18 +65,30 @@ export default ( old_state = initial_state, action ) => {
         categories: {
           ...old_state.categories,
           [categoryName]: {
-            ...old_state.categories[categoryName],
-            [taskId]: taskText
+            active: {
+              ...old_state.categories[categoryName].active,
+              [taskId]: taskText
+            },
+            completed: {
+              ...old_state.categories[categoryName].completed
+            }
           }
         }
       };
     case REMOVE_TASK: 
       var categoryName = action.payload.categoryName;
       var taskId = action.payload.taskId;
+      var taskText = old_state.categories[categoryName].active[taskId];
       return {
         categories: {
           ...old_state.categories,
-          [categoryName]: omit(old_state.categories[categoryName], taskId)
+          [categoryName]: {
+            active: omit(old_state.categories[categoryName].active, taskId),
+            completed: {
+              ...old_state.categories[categoryName].completed,
+              [taskId]: taskText
+            }
+          }
         }
       }
     case REMOVE_CATEGORY:
